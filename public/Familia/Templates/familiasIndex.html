@@ -1,0 +1,103 @@
+<div class="col-md-6" ng-controller="FamiliaCtrl">
+<!-- Form Familia -->
+<div class="box box-primary">
+<div class="box-header">
+  <h3 class="box-title">Familia {{nomeFamilia}}</h3>
+</div><!-- /.box-header -->
+<!-- form start -->
+<form role="form">
+  <div class="box-body">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Familia</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome da Familia" value="{{nomeFamilia}}">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Quantidade de Mebros</label>
+      <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Quantidade de mebros da familia" value="{{qtdMembros}}">
+    </div>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-block btn-success">Salvar</button>
+  </div>
+</form>
+</div>
+<!-- Form Familia -->
+</div>
+
+<!-- mebros da familia-->
+<div class="class="col-md-6"">
+	
+
+
+<div class="box box-primary">
+<div class="box-header with-border">
+  <h3 class="box-title">Membros da familia {{nomeFamilia}}</h3>
+</div><!-- /.box-header -->
+<div class="box-body">
+  <table class="table table-bordered">
+    <tbody>
+    <tr>
+      <th style="width: 10px">#</th>
+      <th>Nome</th>
+      <th>Perfil</th>
+      <th style="width: 40px">Ações</th>
+    </tr>
+    <tr>
+      <td>{{id}}</td>
+      <td>Update software</td>
+      <td>
+        <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+        </div>
+      </td>
+      <td><span class="badge bg-red">55%</span></td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>Clean database</td>
+      <td>
+        <div class="progress progress-xs">
+          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+        </div>
+      </td>
+      <td><span class="badge bg-yellow">70%</span></td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td>Cron job running</td>
+      <td>
+        <div class="progress progress-xs progress-striped active">
+          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+        </div>
+      </td>
+      <td><span class="badge bg-light-blue">30%</span></td>
+    </tr>
+    <tr>
+      <td>4.</td>
+      <td>Fix and squish bugs</td>
+      <td>
+        <div class="progress progress-xs progress-striped active">
+          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+        </div>
+      </td>
+      <td><span class="badge bg-green">90%</span></td>
+    </tr>
+  </tbody>
+  <tfoot>
+	<div class="box-footer">
+		<button type="submit" class="btn btn-block btn-success">Adicionar Membro</button>
+	</div>
+  	
+  </tfoot>
+  </table>
+</div><!-- /.box-body -->
+
+</div>
+<!-- mebros da familia-->      
+
+
+</div>
+
+
+<!-- js do modulo -->
+<script type="text/javascript" src="./src/FamiliaController.js"></script>
+<script type="text/javascript" src="./src/FamiliaService.js"></script>

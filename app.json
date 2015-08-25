@@ -1,0 +1,7 @@
+{
+  "name": "Aplicação nodeJS para stastar o projeto em Angular",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/tiagoCristiano/cffApp.git",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"]
+}
