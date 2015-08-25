@@ -25,6 +25,11 @@ $ git push heroku master
 $ heroku open
 ```
 
+## Deploying to Git
+```
+git remote add origin https://github.com/tiagoCristiano/appCff.git
+git push -u origin master
+```
 ## Documentation
 
 For more information about using Node.js on Heroku, see these Dev Center articles:
