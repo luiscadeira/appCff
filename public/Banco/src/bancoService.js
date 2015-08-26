@@ -8,22 +8,13 @@ app.factory('BancoService', ['$resource', function ($resource) {
     create: { method: 'POST' },
     'delete': {
     	method:'DELETE'
-    }
+    },
+    update: { method: 'PUT', params: {id: '@id'} },
+    show: { method: 'GET' },
   });
 	
 
 
-
-    // var BancoApi = {};
-
-    // BancoApi.getBancos = function () {
-    //     return $http.get(BASE_URL+'/bancos');
-    // };
-
-    // BancoApi.getBanco = function (id) {
-    //     return $http.post(urlBase + '/AddStudent', id);
-    // };
-    // return BancoApi;
 
 }]);
 
