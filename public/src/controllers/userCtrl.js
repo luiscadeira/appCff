@@ -1,21 +1,11 @@
-app.controller('UserCtrl', function ($scope, $http, $window) {
-  $scope.user = {username: 'john@teste.com', password: 'foobar'};
+app.controller('UserCtrl', function ($scope, $http, $window,localStorageService,$location ) {
+  $scope.user = 'Tiago';
   $scope.message = '';
 
   
-  $scope.submit = function () {
-    $http
-      .post('/authenticate', $scope.user)
-      .success(function (data, status, headers, config) {
-        $window.sessionStorage.token = data.token;
-        $scope.message = 'Welcome';
-      })
-      .error(function (data, status, headers, config) {
-        // Erase the token if the user fails to log in
-        delete $window.sessionStorage.token;
+    $scope.logOff = function() {
+         localStorageService.clearAll();
+         $location.path( "/" );
 
-        // Handle login errors here
-        $scope.message = 'Error: Invalid user or password';
-      });
-  };
+    }
 });

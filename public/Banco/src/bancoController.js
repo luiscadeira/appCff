@@ -1,10 +1,14 @@
 app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','StorageData','Notification','blockUI',
 	function ($scope,$location, $route,BancoService , StorageData,Notification,blockUI) {
 
+    $scope.bancos = null;
 		
-		BancoService.query(function(data) {
-		    	$scope.bancos = data._embedded.bancos;
-		});
+    if(StorageData.getFamilia()) {
+
+      BancoService.query(function(data) {
+          $scope.bancos = data._embedded.bancos;
+      });
+    } 		
 
 	    $scope.createBanco = function () {
 

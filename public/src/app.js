@@ -19,15 +19,21 @@ app.config(['$httpProvider', function ($httpProvider) {
 }]);
 
 
-app.service('APIInterceptor',['StorageData','$location',function(StorageData,$location) {
+app.service('APIInterceptor',['StorageData','$location',
+    function(StorageData,$location) {
     var service = this;
 
     service.request = function(config) {
-        if(!StorageData.getFamilia())  {
+
+        var urlAtual = $location.path();
+        
+        if(!StorageData.getFamilia() && '/register' !== urlAtual )  {
             $location.path('/');
-        }
+        }   
         return config; 
     };
+
+  
 
 }]);
 
