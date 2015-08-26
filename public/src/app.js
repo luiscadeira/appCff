@@ -1,7 +1,8 @@
 'use restric';
-var app = angular.module('app', ['ngRoute','ngStorage','ngResource']);
+var app = angular.module('app', ['ngRoute','ngStorage','ngResource','LocalStorageModule','ui-notification','blockUI']);
 
 BASE_URL = "http://localhost:666";
+
 
 app.config(
 	['$routeProvider',
@@ -31,8 +32,31 @@ app.config(
 	]
 );
 
+app.config(['blockUIConfig', function (blockUIConfig) {
+     // Change the default overlay message
+    blockUIConfig.message = 'Aguarde...';
+
+  // Change the default delay to 100ms before the blocking is visible
+    blockUIConfig.delay = 0;
+    blockUIConfig.blockBrowserNavigation = true;
+}])
+
+
+app.config(function(NotificationProvider) {
+        NotificationProvider.setOptions({
+            delay: 10000,
+            startTop: 20,
+            startRight: 10,
+            verticalSpacing: 20,
+            horizontalSpacing: 20,
+            positionX: 'left',
+            positionY: 'top',
+            templateUrl : 'bower_components/angular-ui-notification/src/angular-ui-notification.html'
+        });
+    });
+
 app.controller('userCtrl',['$rootScope', '$scope', '$location', '$localStorage', 'Main', function($rootScope, $scope, $location, $localStorage, Main) {
- 
+        id_familia = localStorage.getItem('familias_id');
  		$scope.user = "Tiago";
         $scope.signin = function() {
 
@@ -90,7 +114,12 @@ app.controller('userCtrl',['$rootScope', '$scope', '$location', '$localStorage',
         $scope.token = $localStorage.token;
     }])
 
-
+// Configurações do localstorage
+.config(function (localStorageServiceProvider) {
+    localStorageServiceProvider
+    .setStorageType('localStorage')
+    .setPrefix('')
+})
 
 .factory('Main', ['$http', '$localStorage', function($http, $localStorage){
 
@@ -145,7 +174,22 @@ app.controller('userCtrl',['$rootScope', '$scope', '$location', '$localStorage',
                 success();
             }
         };
-    }
+}
+
+
+
+
 ]);
 
+
+
+function db(data) {
+    return console.log(data);
+}
+
+function de(data){
+    console.log(data);
+    return false;
+
+}
 

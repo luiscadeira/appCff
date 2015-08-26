@@ -2,7 +2,6 @@ app.factory('FamiliaService', ['$http', '$localStorage', function($http, $localS
 
         return {
             save: function(data, success, error) {
-                return 'save';
                 $http.post(baseUrl + '/signin', data).success(success).error(error)
             },
             signin: function(data, success, error) {

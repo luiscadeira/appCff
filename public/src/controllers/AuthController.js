@@ -1,31 +1,47 @@
-app.controller('AuthCtrl', ['$scope','$http', '$localStorage','$window', function($scope, $http, $localStorage,$window) {
+ app.controller('AuthCtrl', ['$scope','$http', '$localStorage','$location', 'localStorageService',function($scope, $http, $localStorage,$location,localStorageService) {
+
 
 
     $scope.auth = function (authUser) {
+      localStorageService.clearAll();
 
-        AuthService.auth(authUser);
+        // Todo 
+        //AuthService.auth(authUser);
       
         var formData = {
             email: authUser.email,
             password: authUser.password
         }
+
         
         $http.post(BASE_URL + '/auth', formData)
             .success(function (data, status, headers, config) {
-                
-                $window.localStorage.id          = data.id;
-                $window.localStorage.familias_id = data.familias_id;
-                $window.localStorage.perfil      = data.perfil;
-                $rootScope.message               = data.message;
-                console.log(data);
+
+
+                _addKey('id',          data.id);
+                _addKey('familias_id', data.familias_id);
+                _addKey('perfil',      data.perfil);
+                console.log(localStorageService.get('familias_id'))              
+   
+
              })
             .error(function (data, status, headers, config) {
                 // Erase the token if the user fails to log in
-                $scope.error = 'Falha ao tentar acessar';
-                clearSessionStorage();
+               console.log('Falha ao tentar acessar');
                 // Handle login errors here
             });
     };
+
+    $scope.logOff = function() {
+         localStorageService.clearAll();
+         $location.path( "/main" );
+
+    }
+
+
+    function _addKey(key, val) {
+        return localStorageService.set(key, val);
+    }
 
 
 

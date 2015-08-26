@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Controle Financeiro 
-    r | Dashboard</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Controle Financeiro Familiar | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -20,6 +19,14 @@
           apply the skin class to the body tag so the changes take effect.
     -->
     <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- css da notificação -->
+    <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
+
+    <!--css block-ui -->
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-block-ui/dist/angular-block-ui.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +36,7 @@
     <![endif]-->
   </head>
 
-  <body class="skin-blue sidebar-mini" ng-controller="UserCtrl">
+  <body class="skin-blue sidebar-mini" ng-controller="AuthCtrl">
     <div class="wrapper">
 
       <!-- Main Header -->
@@ -83,7 +90,7 @@
               </li>
               <!-- Control Sidebar Toggle Button -->
               <li>
-                <a href="#" data-toggle="control-sidebar" ng-click="logout()">Logout | <i class="fa  fa-power-off"></i></a>
+                <a href="#" data-toggle="control-sidebar" ng-click="logOff()">Logout | <i class="fa  fa-power-off"></i></a>
               </li>
             </ul>
           </div>
@@ -134,7 +141,7 @@
       <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
       <div class='control-sidebar-bg'></div>
-    </div><!-- ./wrapper -->
+     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
 
@@ -150,6 +157,9 @@
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
     <script type="text/javascript" src="bower_components/ngStorage/ngStorage.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-notification/src/angular-ui-notification.js"></script>
+    <script type="text/javascript" src="bower_components/angular-block-ui/dist/angular-block-ui.js"></script>
 
     <script type="text/javascript" src="src/app.js"></script>
   
