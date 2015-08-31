@@ -12,7 +12,8 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
 
 	    $scope.createBanco = function () {
 
-		 	var banco = {
+		 	var banco = 
+            {
 	            nome        : $scope.banco.nome,
 	            agencia     : $scope.banco.agencia,
 	            familias_id : StorageData.getFamilia()
@@ -22,7 +23,7 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
 
 	        var res = BancoService.create(banco, 
 	        	function(data) {
-	        			Notification.success( {message: 'Banco criado com sucesso!', delay: 2000});
+	        			Notification.success( {message: 'Banco criado com sucesso!', delay: 4000});
 	        			$location.path('/bancos');
 
 	            },

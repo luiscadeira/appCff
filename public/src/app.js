@@ -1,18 +1,16 @@
 'use restric';
-var app = angular.module('app', ['ngRoute','ngStorage','ngResource','LocalStorageModule','ui-notification','blockUI']);
+var app = angular.module('app', 
+    [
+        'ngRoute',
+        'ngStorage',
+        'ngResource',
+        'LocalStorageModule',
+        'ui-notification',
+        'blockUI'
+    ]
+);
 
 BASE_URL = "http://localhost:666";
-
-var interceptors = function($q) {
-    return {
-         request : function(config){
-         de(config)
-        }
-
-    }
-   
-};
-
 
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('APIInterceptor');
@@ -32,21 +30,26 @@ app.service('APIInterceptor',['StorageData','$location',
         }   
         return config; 
     };
-
-  
-
 }]);
-
-
-
-
-
 
 app.config(
 	['$routeProvider',
 		function($routeProvider) {
 
 				$routeProvider
+                .when('/bancos', {
+                    templateUrl: 'Banco/Templates/bancoIndex.html',
+                })
+                .when('/newBanco', {
+                    templateUrl: 'Banco/Templates/newBanco.html',
+                })
+                .when('/editBanco/:id', {
+                    templateUrl: 'Banco/Templates/editBanco.html',
+                })
+                .when('/despesas', {
+                    templateUrl: 'Despesa/Templates/despesaIndex.html',
+                })
+
 				.when('/', 
 				{
 					templateUrl	: '../Auth/template/login.html'
@@ -59,15 +62,7 @@ app.config(
 				{
 					templateUrl	: '../Familia/Templates/familiasIndex.html',
 				})
-                .when('/bancos', {
-                    templateUrl: 'Banco/Templates/bancoIndex.html',
-                })
-                .when('/newBanco', {
-                    templateUrl: 'Banco/Templates/newBanco.html',
-                })
-                .when('/editBanco/:id', {
-                    templateUrl: 'Banco/Templates/editBanco.html',
-                })
+           
 				.otherwise({ redirectTo: '/'})
 	    }
 	]
