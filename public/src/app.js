@@ -1,14 +1,13 @@
-'use restric';
-var app = angular.module('app', 
+var app = angular.module('app',
     [
-        'ngRoute',
-        'ngStorage',
-        'ngResource',
-        'LocalStorageModule',
-        'ui-notification',
-        'blockUI'
-    ]
-);
+      'ngRoute',
+      'ngStorage',
+      'ngResource',
+      'LocalStorageModule',
+      'ui-notification',
+      'blockUI'
+     ]
+     );
 
 BASE_URL = "http://localhost:666";
 
@@ -61,6 +60,7 @@ app.config(
 				{
 					templateUrl	: '../Familia/Templates/familiasIndex.html',
 				})
+
                 .when('/familiares', 
                 {
                     templateUrl : '../Familiares/Templates/familiaresIndex.html',
@@ -74,8 +74,8 @@ app.config(
                 .when('/editFamiliar/:id', 
                 {
                     templateUrl : '../Familiares/Templates/editFamiliar.html',
-                }
-				.otherwise({ redirectTo: '/'})
+                })
+				.otherwise({ redirectTo: '/'});
 	    }
 	]
 );
@@ -122,6 +122,5 @@ app.config(function (localStorageServiceProvider) {
 function de(data){
     console.log(data);
     return;
-
 }
 

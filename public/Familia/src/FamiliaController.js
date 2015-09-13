@@ -3,10 +3,16 @@ app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData','Notifi
 
 		$scope.familia = null;
 		var id_familia = StorageData.getFamilia();
-
-	   FamiliaService.query(function(data) {
+     
+       if(0 != id_familia){
+       	FamiliaService.query(function(data) {
           $scope.familia = data._embedded.familia[0];
        });
+
+       } else {
+       		Notification.info( {message: 'Cadestre sua Familia!', delay: 4000} );
+       }
+	   
 
        $scope.save = function (){
        	 if( id_familia  =! 0){	
