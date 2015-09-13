@@ -4,18 +4,18 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
     $scope.bancos = null;
 		
     if(StorageData.getFamilia()) {
-
       BancoService.query(function(data) {
-          $scope.bancos = data._embedded.bancos;
+          $scope.bancos = data._embedded.banco;
       });
     } 		
 
-	    $scope.createBanco = function () {
+	   $scope.createBanco = function () {
 
 		 	var banco = 
             {
 	            nome        : $scope.banco.nome,
 	            agencia     : $scope.banco.agencia,
+              status      : 1,
 	            familias_id : StorageData.getFamilia()
             }
 
@@ -93,5 +93,9 @@ app.controller('BancoDetalhe',['$scope','$location','$routeParams','BancoService
             $location.path('/bancos');
         };
 
-        $scope.banco = BancoService.show({id: $routeParams.id});
+        BancoService.show({id: $routeParams.id}, function(data) {
+          $scope.banco =data[0];
+          de($scope.banco);
+        });
+        
 }])

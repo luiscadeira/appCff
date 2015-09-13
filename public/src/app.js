@@ -22,7 +22,6 @@ app.service('APIInterceptor',['StorageData','$location',
     var service = this;
 
     service.request = function(config) {
-
         var urlAtual = $location.path();
         
         if(!StorageData.getFamilia() && '/register' !== urlAtual )  {
@@ -56,7 +55,7 @@ app.config(
 				})
 				.when('/register', 
 				{
-					templateUrl	: './templates/register.html'
+					templateUrl	: './Register/Templates/registerIndex.html'
 				})
 				.when('/familia', 
 				{

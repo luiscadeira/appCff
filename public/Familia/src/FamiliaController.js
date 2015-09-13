@@ -1,10 +1,12 @@
-app.controller('FamiliaCtrl' , ['$scope', '$localStorage','FamiliaService','StorageData',
-	function($http, $scope, FamiliaService, $localStorage, StorageData){
+app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData',
+	function($scope, FamiliaService, StorageData){
 
-		$scope.familia.nome = "teste";
-	    FamiliaService.query(function(data) {
-          $scope.familia = data._embedded.familias[0];
-          de($scope.familia)
-      });
+		$scope.familia = null;
+
+	   FamiliaService.query(function(data) {
+          $scope.familia = data._embedded.familia[0];
+          de($scope.familia);
+        });
+
 
 }]);
