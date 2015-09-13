@@ -19,16 +19,14 @@
         
         $http.post(BASE_URL + '/auth', formData)
             .success(function (data, status, headers, config) {
-
                 if(status !== 401) {
                     _addKey('id',          data.id);
-                    _addKey('familias_id', data.familias_id);
-                    _addKey('perfil',       data.perfil);
+                    _addKey('familia_id',  data.familia_id);
+                    _addKey('perfil',      data.perfil);
                     Notification.success( {message: data.message, delay: 5000});
-                    $location.path( "/bancos" );
-                    return;
+                    return $location.path( "/bancos" );
                 }
-                 Notification.error( {message: 'Email ou senha incorreta', delay: 2000});
+                 Notification.error( {message: 'Email ou senha incorreta |'+error.statusText , delay: 2000});
                  $scope.authUser.password = null;
          
             })
@@ -52,6 +50,7 @@
         if(!StorageData.getFamilia()) {
             Notification.error( {message: 'Efetue o login!', delay: 3000});
         }
+        return;
 
     }
    

@@ -23,9 +23,10 @@ app.service('APIInterceptor',['StorageData','$location',
 
     service.request = function(config) {
         var urlAtual = $location.path();
-        
-        if(!StorageData.getFamilia() && '/register' !== urlAtual )  {
-            $location.path('/');
+        var id_familia = StorageData.getFamilia();
+      
+        if(!id_familia && '/register' !== urlAtual )  {
+           $location.path('/');
         }   
         return config; 
     };

@@ -15,8 +15,8 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
             {
 	            nome        : $scope.banco.nome,
 	            agencia     : $scope.banco.agencia,
-              status      : 1,
-	            familias_id : StorageData.getFamilia()
+              status      : 1, 
+	            familia_id : StorageData.getFamilia()
             }
 
             blockUI.start();
@@ -71,15 +71,13 @@ app.controller('BancoDetalhe',['$scope','$location','$routeParams','BancoService
 		$scope.updateBanco = function () {
 
 			var banco = {
-				id          : $scope.banco.id,
+				      id          : $scope.banco.id,
 	            nome        : $scope.banco.nome,
 	            agencia     : $scope.banco.agencia,
-	            familias_id : StorageData.getFamilia()
+	            familia_id  : StorageData.getFamilia(),
+              status      : 1
             }
-
-            BancoService.update(banco, 
-
-            	    function(data) {
+            BancoService.update(banco, function(data) {
        					Notification.info( {message: 'Banco: '+banco.nome+' alterado com sucesso', delay: 2000} );
        					$location.path('/bancos');
        				},
@@ -95,7 +93,6 @@ app.controller('BancoDetalhe',['$scope','$location','$routeParams','BancoService
 
         BancoService.show({id: $routeParams.id}, function(data) {
           $scope.banco =data[0];
-          de($scope.banco);
         });
         
 }])

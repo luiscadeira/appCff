@@ -1,40 +1,42 @@
-app.controller('RegisterCtrl', ['$scope','StorageData' ,'RegisterService','Notification',
+
+app.controller('RegisterCtrl', ['$scope','RegisterService','Notification','$location',
 	
-function ($scope,StorageData,Notification,RegisterService) {
+function ($scope,RegisterService,Notification,$location) {
 
-
-	$scope.create =  function() {
+	$scope.save =  function() {
 
 		var usuario = 
         {
             email       : $scope.register.email,
             nome		: $scope.register.nome,
-            password1   : $scope.register.password,
-            password2   : $scope.register.repeatPassword
+            password    : $scope.register.password,
+            password2   : $scope.register.repeatPassword,
+            status      : 1,
+            perfil      : 1
         }
         
-
 		if(validaPassword(usuario)){
-			de(usuario);
-			var res = RegisterService.save(usuario, function() {
-					Notification.success( {message: 'Usuario criado com sucesso!', delay: 4000});
-	        			$location.path('/');
+			RegisterService.save(usuario, function(data){
+				if(data.validate) {
+					Notification.error({message: 'Email informado já cadastado!' , delay: 4000});
+					$scope.register.email = null;
+				}
+				Notification.success( {message: 'Usuário criado com sucesso!', delay: 4000});
+	        	$location.path('/');
 			});
+	    } else {
+	    	Notification.error({message: 'A senhas informadas não são iguais' , delay: 1000});
+	    }
 
-		}
-
-		Notification.error({message: 'A senhas informadas não são iguais' , delay: 1000});
+		
 	}
 
 	function validaPassword (register) {
-		if(register.password1 !== register.password2) {
+		if(register.password !== register.password2) {
 			return false;
 		}
 		return true;
 	}
-
-
-
 
 
 }])

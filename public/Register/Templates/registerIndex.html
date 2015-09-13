@@ -11,12 +11,13 @@
 
          <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Nome" ng-model="register.nome"/>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        
           </div>
 
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Email" ng-model="register.email"/>
-               <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
 
           <div class="form-group has-feedback">
@@ -33,7 +34,7 @@
             <div class="col-xs-8">    
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="create()">Registrar</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="save()">Registrar</button>
             </div><!-- /.col -->
           </div>
         </form>        
