@@ -1,0 +1,42 @@
+<div ng-controller="FamiliaresCtrl">
+<div class="row" >
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Familia {{familia.nome}}</h3>
+            <div class="box-tools">
+              <div class="input-group">
+                <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Buscar Familiar" ng-model="familiar"  />
+                <div class="input-group-btn">
+                  <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-striped">
+              <tr>
+                <th hidden>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+              </tr>
+              <tr ng-repeat="familiar in familiarers | filter: familiar">
+                <td hidden>{{familiar.id}}</td>
+                <td>{{familiar.nome}}</td>
+                <td>
+                  <button class="btn btn-danger" ng-click="delete(familiar)"><i class='fa fa-trash'></i>  Remover</button>
+                  <button class="btn btn-primary" ng-click="editBanco(familiar)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>
+                </td>
+              </tr>
+            </table>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+</div>
+<button class="btn btn-success" ng-click="novoFamiliar()"><i class="fa fa-plus"></i> Adicionar Familiar</button>
+</div>
+
+
+
+
+

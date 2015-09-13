@@ -16,7 +16,6 @@ app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('APIInterceptor');
 }]);
 
-
 app.service('APIInterceptor',['StorageData','$location',
     function(StorageData,$location) {
     var service = this;
@@ -62,7 +61,20 @@ app.config(
 				{
 					templateUrl	: '../Familia/Templates/familiasIndex.html',
 				})
-           
+                .when('/familiares', 
+                {
+                    templateUrl : '../Familiares/Templates/familiaresIndex.html',
+                })
+
+                .when('/newFamiliar', 
+                {
+                    templateUrl : '../Familiares/Templates/newFamiliar.html',
+                })
+
+                .when('/editFamiliar/:id', 
+                {
+                    templateUrl : '../Familiares/Templates/editFamiliar.html',
+                }
 				.otherwise({ redirectTo: '/'})
 	    }
 	]
@@ -107,14 +119,9 @@ app.config(function (localStorageServiceProvider) {
 
 
 
-
-function db(data) {
-    return console.log(data);
-}
-
 function de(data){
     console.log(data);
-    return false;
+    return;
 
 }
 
