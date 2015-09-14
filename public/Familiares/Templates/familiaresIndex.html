@@ -1,4 +1,4 @@
-<div ng-controller="FamiliaresCtrl">
+<div class="col-md-4" ng-controller="FamiliaresCtrl">
 <div class="row" >
       <div class="col-xs-12">
         <div class="box">
@@ -18,11 +18,13 @@
               <tr>
                 <th hidden>ID</th>
                 <th>Nome</th>
+                <th>Perfil</th>
                 <th>Ações</th>
               </tr>
               <tr ng-repeat="familiar in familiares | filter: familiar">
                 <td hidden>{{familiar.id}}</td>
                 <td>{{familiar.nome}}</td>
+                <td>{{familiar.perfil}}</td>
                 <td>
                   <button class="btn btn-danger" ng-click="delete(familiar)"><i class='fa fa-trash'></i>  Remover</button>
                   <button class="btn btn-primary" ng-click="editBanco(familiar)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>

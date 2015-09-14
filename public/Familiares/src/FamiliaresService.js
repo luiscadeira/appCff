@@ -3,11 +3,11 @@ app.factory('FamiliaresService', ['$resource', 'StorageData',
 
   var familias_id =  StorageData.getFamilia();
   
-  return $resource(BASE_URL + "/familiares/:id", {}, {
+  return $resource(BASE_URL + "/user/:id", {}, {
     query: { 
       method : "GET",
       isArray: false ,
-      url : BASE_URL + "/familiares?familia_id="+familias_id,
+      url : BASE_URL + "/user?familia_id="+familias_id,
     },
     create: { method: 'POST' },
     'delete': {

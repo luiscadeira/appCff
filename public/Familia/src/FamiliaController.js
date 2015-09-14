@@ -11,14 +11,12 @@ app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData','Notifi
        });
 
        } else {
-       		Notification.info( {message: 'Cadastre sua a Familia!', delay: 6000} );
+       		Notification.info( {message: 'Cadastre sua Familia!', delay: 6000} );
        }
 	   
 
-       $scope.save = function (familia_id) {
-       	
-       	
-       	 if( familia_id ){	
+       $scope.save = function (familia_id) {    	
+        	 if( familia_id ){	
        	 	FamiliaService.update($scope.familia, function(data) {
        	 		Notification.info( {message: 'Familia: '+$scope.familia.nome+' alterada com sucesso', delay: 2000} );
        					$location.path('/familia');
