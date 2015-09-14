@@ -1,5 +1,5 @@
-app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','StorageData','Notification','blockUI',
-	function ($scope,$location, $route,BancoService , StorageData,Notification,blockUI) {
+app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','StorageData','Notification',
+	function ($scope,$location, $route,BancoService , StorageData,Notification) {
 
     $scope.bancos = null;
 		
@@ -11,15 +11,12 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
 
 	   $scope.createBanco = function () {
 
-		 	var banco = 
-            {
+		 	var banco = {
 	            nome        : $scope.banco.nome,
 	            agencia     : $scope.banco.agencia,
               status      : 1, 
 	            familia_id : StorageData.getFamilia()
             }
-
-            blockUI.start();
 
 	        var res = BancoService.create(banco, 
 	        	function(data) {
@@ -31,8 +28,7 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
 	            	Notification.error({message: 'Erro ao criar banco :'+error.statusText , delay: 1000});
 	            });
 
-	        blockUI.stop();                
-        }
+	        }
 
 
          $scope.editBanco = function (banco) {

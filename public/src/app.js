@@ -4,8 +4,8 @@ var app = angular.module('app',
       'ngStorage',
       'ngResource',
       'LocalStorageModule',
-      'ui-notification',
-      'blockUI'
+      'ui-notification'
+      //'blockUI'
      ]
      );
 
@@ -80,6 +80,7 @@ app.config(
 	]
 );
 
+/**
 app.config(['blockUIConfig', function (blockUIConfig) {
      // Change the default overlay message
     blockUIConfig.message = 'Aguarde...';
@@ -88,7 +89,7 @@ app.config(['blockUIConfig', function (blockUIConfig) {
     blockUIConfig.delay = 0;
     blockUIConfig.blockBrowserNavigation = true;
 }])
-
+**/
 
 app.config(function(NotificationProvider) {
         NotificationProvider.setOptions({
