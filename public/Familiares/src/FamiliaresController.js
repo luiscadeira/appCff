@@ -2,12 +2,14 @@ app.controller('FamiliaresCtrl', ['$scope','StorageData', 'FamiliaresService','$
 	function ($scope,StorageData,FamiliaresService,$location) {
 
     $scope.familiares = null;
-
 		
     if(StorageData.getFamilia()) {
       FamiliaresService.query(function(data) {
           $scope.familiares = data._embedded.user;
-          $scope.familia = $scope.familiares[0].familia.nome;
+          if("" != $scope.familiares) {
+            de($scope.familiares);
+            $scope.familia = $scope.familiares[0].familia.nome;
+          }
       });
     }
 
