@@ -15,6 +15,7 @@ app.factory('FamiliaService', ['$resource', 'StorageData',
     },
     update: { method: 'PUT', params: {id: '@id'} },
     show:   { method: 'GET' },
+    addFamiliaInUser : {method: 'POST'}
   });
     
 }]);

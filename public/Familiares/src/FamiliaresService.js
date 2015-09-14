@@ -7,7 +7,7 @@ app.factory('FamiliaresService', ['$resource', 'StorageData',
     query: { 
       method : "GET",
       isArray: false ,
-      url : BASE_URL + "/familia?familia_id="+familias_id,
+      url : BASE_URL + "/familiares?familia_id="+familias_id,
     },
     create: { method: 'POST' },
     'delete': {
