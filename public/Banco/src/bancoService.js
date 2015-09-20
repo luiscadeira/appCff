@@ -5,6 +5,7 @@ app.factory('BancoService',['$resource', 'StorageData',
   var id_familia = StorageData.getFamilia();
    
   return $resource(BASE_URL + "/banco/:id", {}, {
+    
     query: { 
       method : "GET",
       isArray: false ,

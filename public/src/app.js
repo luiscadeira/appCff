@@ -75,6 +75,15 @@ app.config(
                 {
                     templateUrl : '../Familiares/Templates/editFamiliar.html',
                 })
+
+                 .when('/contas', 
+                {
+                    templateUrl : '../Contas/Templates/contasIndex.html',
+                })
+                .when('/newContas', 
+                {
+                    templateUrl : '../Contas/Templates/newConta.html',
+                })
 				.otherwise({ redirectTo: '/'});
 	    }
 	]

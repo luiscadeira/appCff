@@ -1,0 +1,51 @@
+
+<div class="col-md-12" ng-controller="ContaCtrl">
+<div class="row" >
+<div class="form-group">
+                  
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Contas Bancárias</h3>
+            <div class="box-tools">
+              <div class="input-group">
+                <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Buscar Banco" ng-model="buscarBanco"  />
+                <div class="input-group-btn">
+                  <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-striped">
+              <tr>
+                <th hidden>ID</th>
+                <th>Numero</th>
+                <th>Banco</th>
+                <th>Ações</th>
+              </tr>
+              <tr ng-repeat="conta in contas | filter: buscarBanco">
+                <td hidden>{{conta.id}}</td>
+                <td>{{conta.numero}}</td>
+                <td>{{conta.banco.nome}}</td>
+                <td>
+                  <button class="btn btn-danger" ng-click="delete(conta)"><i class='fa fa-trash'></i>  Remover</button>
+                  <button class="btn btn-primary" ng-click="editBanco(conta)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>
+                </td>
+              </tr>
+            </table>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+      <div class="box-footer">
+        <button class="btn btn-success" ng-click="novaConta()"><i class="fa fa-plus"></i> Adicionar Conta Bancaria</button>
+      </div>
+
+</div>
+
+</div>
+
+
+
+
+

@@ -4,9 +4,16 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
     $scope.bancos = null;
 		
     if(StorageData.getFamilia()) {
-      BancoService.query(function(data) {
+      BancoService.query().$promise.then(
+        function(data) {
+          de(data)
           $scope.bancos = data._embedded.banco;
-      });
+        },
+        function( error ){
+
+          Notification.error({message: 'Erro ao carregar bancos :\n'+error.status+'-'+  error.statusText , delay: 9000});
+        }
+      );
     } 		
 
 	   $scope.createBanco = function () {
@@ -88,7 +95,7 @@ app.controller('BancoDetalhe',['$scope','$location','$routeParams','BancoService
         };
 
         BancoService.show({id: $routeParams.id}, function(data) {
-          $scope.banco =data[0];
+          $scope.banco = data[0];
         });
         
 }])
