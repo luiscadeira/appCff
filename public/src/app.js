@@ -4,7 +4,7 @@ var app = angular.module('app',
       'ngStorage',
       'ngResource',
       'LocalStorageModule',
-      'ui-notification'
+      'ui-notification',
       //'blockUI'
      ]
      );
@@ -83,6 +83,10 @@ app.config(
                 .when('/newContas', 
                 {
                     templateUrl : '../Contas/Templates/newConta.html',
+                })
+                .when('/editContas/:id', 
+                {
+                    templateUrl : '../Contas/Templates/editConta.html',
                 })
 				.otherwise({ redirectTo: '/'});
 	    }

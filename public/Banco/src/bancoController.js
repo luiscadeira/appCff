@@ -38,7 +38,7 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
 	        }
 
 
-         $scope.editBanco = function (banco) {
+        $scope.editBanco = function (banco) {
             $location.path('/editBanco/' + banco.id);
         };
 
