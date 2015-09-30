@@ -6,6 +6,9 @@ app.factory('StorageData', ['localStorageService', function (localStorageService
     StorageApi.getFamilia = function () {
         return localStorageService.get('familia_id')
     };
+    StorageApi.getValue =  function(key) {
+        return localStorageService.get(key);
+    }
 
     StorageApi.setValue = function(key, val) {
     	 return localStorageService.set(key, val);

@@ -3,10 +3,15 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
 
 	$scope.contas = null;
 		
-    if(StorageData.getFamilia() && $location.path() != '/newContas') {
+    if(StorageData.getFamilia() != 0 && $location.path() != '/newContas') {
       ContaService.query().$promise.then(
         function( data ) {
-          $scope.contas = data._embedded.contas;
+         
+          if(data.total_items === 0) {
+          	Notification.info( {message: 'Cadastre suas contas bancárias.', delay: 2000});
+            return;
+          }
+           $scope.contas = data._embedded.contas;
         },
         function( error ){
           Notification.error({message: 'Erro ao carregar contas :\n'+error.status+'-'+  error.statusText , delay: 9000});
@@ -40,7 +45,7 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
 	        de(conta);
 
 	        var res = ContaService.create(conta, 
-	        	function(data) {
+	        	function(sucess) {
 	        			Notification.success( {message: 'Conta criado com sucesso!', delay: 4000});
 	        			$location.path('/contas');
 	            },
@@ -51,6 +56,8 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
 	}
 
 
+
+
     $scope.editConta = function (conta) {
             $location.path('/editContas/' + conta.id);
     };
@@ -58,7 +65,7 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
 	$scope.delete = function(conta) {
 		 		if (confirm('Remover conta: '+conta.numero+" ?")) {
        				ContaService.delete({id: conta.id}, function(data) {
-       					Notification.info( {message: 'Conta: '+conta.numero+' removido com sucesso', delay: 2000});
+       					Notification.info( {message: 'Conta: '+conta.numero+' removida com sucesso', delay: 2000});
        					 $route.reload() 
        				},
        				function(error) {
@@ -76,6 +83,31 @@ app.controller('ContaDetalheCtrl', ['$scope', 'ContaService','StorageData','$loc
 	   ContaService.show({id: $routeParams.id}, function(data) {
           $scope.conta = data;   
         });
+
+		$scope.voltar = function() {
+			$location.path('/contas')
+		}
+
+		$scope.updateBanco = function()
+		{
+			var conta = {
+				id          : $scope.conta.id,
+	            numero      : $scope.conta.numero,
+	            banco_id    : $scope.conta.banco,
+	            familia_id  : StorageData.getFamilia(),
+                status      : 1
+            }
+
+            ContaService.update(conta, function(data) {
+       					Notification.info( {message: 'Conta: '+ conta.numero +' alterado com sucesso', delay: 2000} );
+       					$location.path('/contas');
+       				},
+       				function(error) {
+       					Notification.error( {message: 'Erro ao atualizar conta: '+ conta.numero +'.\n'+error.statusText, delay: 2000});
+                        $location.path('/contas');
+           });
+            
+		}
 
 	    BancoService.query().$promise.then(
         function(data) {

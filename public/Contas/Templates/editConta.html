@@ -15,7 +15,7 @@
       <div class="form-group">
       <label for="banco">Banco</label>
       <select if="banco" class="form-control" ng-model="conta.banco" >
-        <option ng-repeat="banco in bancos" value="{{banco.id}}">{{banco.nome}}</option>
+        <option ng-init="banco" ng-repeat="banco in bancos" value="{{banco.id}}">{{banco.nome}}</option>
       </select>
     </div>
   <div class="box-footer">

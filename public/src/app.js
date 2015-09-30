@@ -5,7 +5,7 @@ var app = angular.module('app',
       'ngResource',
       'LocalStorageModule',
       'ui-notification',
-      //'blockUI'
+       'blockUI'
      ]
      );
 
@@ -22,8 +22,8 @@ app.service('APIInterceptor',['StorageData','$location',
     service.request = function(config) {
         var urlAtual = $location.path();
         var id_familia = StorageData.getFamilia();
-      
-        if(!id_familia && '/register' !== urlAtual )  {
+     
+        if((!id_familia || 0 === id_familia) && '/register' !== urlAtual )  {
            $location.path('/');
         }   
         return config; 
@@ -93,16 +93,16 @@ app.config(
 	]
 );
 
-/**
+
 app.config(['blockUIConfig', function (blockUIConfig) {
      // Change the default overlay message
     blockUIConfig.message = 'Aguarde...';
 
-  // Change the default delay to 100ms before the blocking is visible
+    //Change the default delay to 100ms before the blocking is visible
     blockUIConfig.delay = 0;
     blockUIConfig.blockBrowserNavigation = true;
-}])
-**/
+}]);
+
 
 app.config(function(NotificationProvider) {
         NotificationProvider.setOptions({

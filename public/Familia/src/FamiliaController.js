@@ -1,5 +1,5 @@
-app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData','Notification','$location',
-	function($scope, FamiliaService, StorageData, Notification, $location){
+app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData','Notification','$location','UserService',
+	function($scope, FamiliaService, StorageData, Notification, $location, UserService){
 
 		$scope.familia = null;
 		var familia_id = StorageData.getFamilia();
@@ -19,17 +19,23 @@ app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData','Notifi
         	 if( familia_id ){	
        	 	FamiliaService.update($scope.familia, function(data) {
        	 		Notification.info( {message: 'Familia: '+$scope.familia.nome+' alterada com sucesso', delay: 2000} );
-       					$location.path('/familia');
+       			$location.path('/familia');
        	 	});
        	 } else {
-       	 	 FamiliaService.create($scope.familia, function(data) {
-       	 	   Notification.success( {message: 'Familia: '+$scope.familia.nome+' criada com sucesso', delay: 2000} );
-       	 	   StorageData.removeKey('familia_id');
-       	 	   StorageData.setValue('familia_id', data.id);
-       	 	   $location.path('/familia');
-       	 	   //todo
-       	 	   //FamiliaService.addFamiliaInUser();
-       	    });
+       	 	   FamiliaService.create($scope.familia, function(data) {
+                          Notification.success( {message: 'Familia: '+$scope.familia.nome+' criada com sucesso', delay: 2000} );
+                          StorageData.removeKey('familia_id');
+                          StorageData.setValue('familia_id',  data.id); 
+
+                          var user = {
+                              familia_id  : StorageData.getFamilia()
+                          };
+                           UserService.update(user);
+                     }
+
+       	 	 
+
+        	    );
 
        	 }
        	 

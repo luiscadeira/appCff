@@ -1,4 +1,3 @@
-
 app.factory('RegisterService',['$resource', 
 function ($resource) {
 

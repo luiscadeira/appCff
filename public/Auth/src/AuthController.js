@@ -23,8 +23,9 @@
                     _addKey('id',          data.id);
                     _addKey('familia_id',  data.familia_id);
                     _addKey('perfil',      data.perfil);
+                    _addKey('nome',        data.nome);
                     Notification.success( {message: data.message, delay: 5000});
-                    return $location.path( "/bancos" );
+                    return $location.path( "/familia" );
                 }
                  Notification.error( {message: 'Email ou senha incorreta |'+error.statusText , delay: 2000});
                  $scope.authUser.password = null;

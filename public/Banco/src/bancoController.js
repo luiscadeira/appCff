@@ -3,17 +3,21 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
 
     $scope.bancos = null;
 		
-    if(StorageData.getFamilia()) {
+    if(StorageData.getFamilia() != 0) {
       BancoService.query().$promise.then(
         function(data) {
-          de(data)
           $scope.bancos = data._embedded.banco;
         },
         function( error ){
-
-          Notification.error({message: 'Erro ao carregar bancos :\n'+error.status+'-'+  error.statusText , delay: 9000});
+          if(error.status === 404) {
+            Notification.info({message:'Cadastre seus bancos.', delay:5000});
+            return;
+          }
+          Notification.error({message: "Erro ao consultar bancos:" + status,  delay: 9000});
         }
       );
+    } else {
+        Notification.info({message:'Cadastre seus bancos.', delay:5000});
     } 		
 
 	   $scope.createBanco = function () {
@@ -86,7 +90,7 @@ app.controller('BancoDetalhe',['$scope','$location','$routeParams','BancoService
        				},
        				function(error) {
        					Notification.error( {message: 'Erro ao remover Banco: '+banco.nome+'.\n'+error.statusText, delay: 2000});
-                        $location.path('/bancos');
+                $location.path('/bancos');
            });
         }
 
