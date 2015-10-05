@@ -9,7 +9,10 @@ app.factory('FamiliaresService', ['$resource', 'StorageData',
       isArray: false ,
       url : BASE_URL + "/user?familia_id="+familias_id,
     },
-    create: { method: 'POST' },
+    create: {
+     method: 'POST',
+     url:   BASE_URL +'/familiares'
+    },
     'delete': {
         method:'DELETE'
     },

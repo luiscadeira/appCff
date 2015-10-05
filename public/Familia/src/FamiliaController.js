@@ -6,6 +6,7 @@ app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData','Notifi
 		
      
        if(0 != familia_id){
+       
        	FamiliaService.query(function(data) {
           $scope.familia = data._embedded.familia[0];
        });
@@ -30,6 +31,7 @@ app.controller('FamiliaCtrl' , ['$scope', 'FamiliaService','StorageData','Notifi
                           var user = {
                               familia_id  : StorageData.getFamilia()
                           };
+                          
                            UserService.update(user);
                      }
 
