@@ -6,7 +6,6 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
     if(StorageData.getFamilia() != 0 && $location.path() != '/newContas') {
       ContaService.query().$promise.then(
         function( data ) {
-         
           if(data.total_items === 0) {
           	Notification.info( {message: 'Cadastre suas contas bancárias.', delay: 2000});
             return;
@@ -19,7 +18,7 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
       );
     }
 
-    if(StorageData.getFamilia()) {
+    if(StorageData.getFamilia() && $location.path() != '/contas') {
       BancoService.query().$promise.then(
         function(data) {
           $scope.bancos = data._embedded.banco;
@@ -30,9 +29,15 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
       );
     }
 
+
+
 	$scope.novaConta = function() {
 	   $location.path('/newContas');
 	}
+
+  $scope.voltar =  function(){
+    $location.path('/contas')
+  }
 
     $scope.createConta = function() {
 
@@ -42,7 +47,6 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
 	            status      : 1, 
 	            familia_id  : StorageData.getFamilia()
 	        }
-	        de(conta);
 
 	        var res = ContaService.create(conta, 
 	        	function(sucess) {
@@ -54,9 +58,6 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
 	            });
 
 	}
-
-
-
 
     $scope.editConta = function (conta) {
             $location.path('/editContas/' + conta.id);
@@ -83,6 +84,8 @@ app.controller('ContaDetalheCtrl', ['$scope', 'ContaService','StorageData','$loc
 	   ContaService.show({id: $routeParams.id}, function(data) {
           $scope.conta = data;   
         });
+
+ 
 
 		$scope.voltar = function() {
 			$location.path('/contas')

@@ -3,7 +3,7 @@ app.controller('BancoCtrl', ['$scope','$location', '$route','BancoService','Stor
 
     $scope.bancos = null;
 		
-    if(StorageData.getFamilia() != 0) {
+    if(StorageData.getFamilia() != 0 && $location.path() != '/newBanco') {
       BancoService.query().$promise.then(
         function(data) {
           $scope.bancos = data._embedded.banco;

@@ -16,13 +16,13 @@ function ($scope,RegisterService,Notification,$location) {
         }
         
 		if(validaPassword(usuario)){
-			RegisterService.save(usuario, function(data){
-				if(data.validate) {
-					Notification.error({message: 'Email informado já cadastado!' , delay: 4000});
-					$scope.register.email = null;
-				}
+			RegisterService.save(usuario, function(success){
 				Notification.success( {message: 'Usuário criado com sucesso!', delay: 4000});
 	        	$location.path('/');
+			},
+			function(error) {
+					Notification.error({message: 'Email informado já cadastado, informe outro email!' , delay: 4000});
+					$scope.register.email = null;
 			});
 	    } else {
 	    	Notification.error({message: 'A senhas informadas não são iguais' , delay: 1000});
