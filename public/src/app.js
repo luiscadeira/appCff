@@ -88,6 +88,18 @@ app.config(
                 {
                     templateUrl : '../Contas/Templates/editConta.html',
                 })
+                .when('/categorias', 
+                {
+                    templateUrl : '../Categorias/Templates/categoriasIndex.html',
+                })
+                 .when('/newCategoria', 
+                {
+                    templateUrl : '../Categorias/Templates/newCategoria.html',
+                })
+                .when('/editCategoria/:id', 
+                {
+                    templateUrl : '../Categorias/Templates/editCategoria.html',
+                })
 				.otherwise({ redirectTo: '/'});
 	    }
 	]
@@ -134,7 +146,7 @@ app.config(function (localStorageServiceProvider) {
 
 
 function de(data){
-    console.log(data);
+    console.log(angular.toJson(data));
     return;
 }
 
