@@ -12,7 +12,6 @@ function ($scope,RegisterService,Notification,$location) {
             password    : $scope.register.password,
             password2   : $scope.register.repeatPassword,
             status      : 1,
-            perfil      : 1
         }
         
 		if(validaPassword(usuario)){
@@ -27,7 +26,6 @@ function ($scope,RegisterService,Notification,$location) {
 	    } else {
 	    	Notification.error({message: 'A senhas informadas não são iguais' , delay: 1000});
 	    }
-
 		
 	}
 

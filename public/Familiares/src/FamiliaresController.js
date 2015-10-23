@@ -11,7 +11,6 @@ angular.module('app')
       FamiliaresService.query(function(data) {
 
 	      $scope.familiares = data._embedded.user;
-	      de($scope.familiares);
           $scope.familia = data._embedded.user[0].familia;
       });
     }
@@ -26,7 +25,6 @@ angular.module('app')
 
     $scope.create = function () {
         $scope.familiar = {
-          perfil : 0,
           status : 1,
           nome   : $scope.familiar.nome,
           email  : $scope.familiar.email,
