@@ -26,7 +26,6 @@ angular.module('app')
 
     $scope.create = function () {
         $scope.familiar = {
-          perfil : 0,
           status : 1,
           nome   : $scope.familiar.nome,
           email  : $scope.familiar.email,

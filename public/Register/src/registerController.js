@@ -12,7 +12,6 @@ function ($scope,RegisterService,Notification,$location) {
             password    : $scope.register.password,
             password2   : $scope.register.repeatPassword,
             status      : 1,
-            perfil      : 1
         }
         
 		if(validaPassword(usuario)){
@@ -21,7 +20,7 @@ function ($scope,RegisterService,Notification,$location) {
 	        	$location.path('/');
 			},
 			function(error) {
-					Notification.error({message: 'Email informado já cadastado, informe outro email!' , delay: 4000});
+					Notification.error({message: 'Email informado já cadastrado, informe outro email!' , delay: 4000});
 					$scope.register.email = null;
 			});
 	    } else {

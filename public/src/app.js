@@ -24,7 +24,7 @@ app.service('APIInterceptor',['StorageData','$location',
         var id_familia = StorageData.getFamilia();
      
         if((!id_familia || 0 === id_familia) && '/register' !== urlAtual )  {
-           $location.path('/');
+           $location.path('/login');
         }   
         return config; 
     };
@@ -48,7 +48,7 @@ app.config(
                     templateUrl: 'Despesa/Templates/despesaIndex.html',
                 })
 
-				.when('/', 
+				.when('/login', 
 				{
 					templateUrl	: '../Auth/template/login.html'
 				})
@@ -100,7 +100,11 @@ app.config(
                 {
                     templateUrl : '../Categorias/Templates/editCategoria.html',
                 })
-				.otherwise({ redirectTo: '/'});
+                .when('/dash', 
+                {
+                    templateUrl : '../dashboard/dashBoard.html',
+                })
+				.otherwise({ redirectTo: '/dash'});
 	    }
 	]
 );

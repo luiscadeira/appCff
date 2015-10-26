@@ -1,4 +1,3 @@
-
 app.factory('BancoService',['$resource', 'StorageData',
   function ($resource,StorageData) {
 

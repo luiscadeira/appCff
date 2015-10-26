@@ -6,7 +6,7 @@
 
     $scope.bancos = null;
     
-    if(StorageData.getFamilia() != 0 && $location.path() != '/newBanco') {
+    if(StorageData.getFamilia() != 0 && $location.path() !== '/newBanco') {
       BancoService.query().$promise.then(
         function(data) {
           $scope.bancos = data._embedded.banco;
@@ -19,9 +19,7 @@
           Notification.error({message: "Erro ao consultar bancos:" + status,  delay: 9000});
         }
       );
-    } else {
-        Notification.info({message:'Cadastre seus bancos.', delay:5000});
-    }     
+    }  
 
      $scope.createBanco = function () {
 

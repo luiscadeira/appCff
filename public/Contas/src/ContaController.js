@@ -24,9 +24,17 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
           $scope.bancos = data._embedded.banco;
         },
         function( error ){
-          Notification.error({message: 'Erro ao carregar bancos :\n'+error.status+'-'+  error.statusText , delay: 9000});
-        }
-      );
+
+           if(error.status === 404) {
+             $location.path('/bancos');
+             Notification.info({message: 'Cadastre seus bancos primeiramente' , delay: 9000});
+             return;
+          }
+
+          Notification.error({message: error.status+'-'+  error.statusText , delay: 9000});
+         
+         
+      });
     }
 
 
@@ -83,6 +91,7 @@ app.controller('ContaDetalheCtrl', ['$scope', 'ContaService','StorageData','$loc
 
 	   ContaService.show({id: $routeParams.id}, function(data) {
           $scope.conta = data;   
+          de(data); 
         });
 
  
@@ -94,11 +103,11 @@ app.controller('ContaDetalheCtrl', ['$scope', 'ContaService','StorageData','$loc
 		$scope.updateBanco = function()
 		{
 			var conta = {
-				id          : $scope.conta.id,
+				      id          : $scope.conta.id,
 	            numero      : $scope.conta.numero,
 	            banco_id    : $scope.conta.banco,
 	            familia_id  : StorageData.getFamilia(),
-                status      : 1
+              status      : 1
             }
 
             ContaService.update(conta, function(data) {
@@ -113,8 +122,9 @@ app.controller('ContaDetalheCtrl', ['$scope', 'ContaService','StorageData','$loc
 		}
 
 	    BancoService.query().$promise.then(
-        function(data) {
-          $scope.bancos = data._embedded.banco;
+        function(data) {        
+          $scope.bancoList = data._embedded.banco;
+          de(data);
         },
         function( error ){
           Notification.error({message: 'Erro ao carregar bancos :\n'+error.status+'-'+  error.statusText , delay: 9000});

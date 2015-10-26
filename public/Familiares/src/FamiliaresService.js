@@ -11,9 +11,9 @@ app.factory('FamiliaresService', ['$resource', 'StorageData',
     },
     create: {
      method: 'POST',
-     url:   BASE_URL +'/familiares'
+     url:   BASE_URL +'/familiares?familia_id='+familias_id
     },
-    'delete': {
+    delete: {
         method:'DELETE'
     },
     update: { method: 'PUT', params: {id: '@id'} },
