@@ -26,7 +26,6 @@ function ($scope,RegisterService,Notification,$location) {
 	    } else {
 	    	Notification.error({message: 'A senhas informadas não são iguais' , delay: 1000});
 	    }
-
 		
 	}
 

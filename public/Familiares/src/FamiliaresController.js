@@ -11,7 +11,6 @@ angular.module('app')
       FamiliaresService.query(function(data) {
 
 	      $scope.familiares = data._embedded.user;
-	      de($scope.familiares);
           $scope.familia = data._embedded.user[0].familia;
       });
     }
