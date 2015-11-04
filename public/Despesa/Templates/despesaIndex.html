@@ -6,7 +6,7 @@
                 <div class="inner">
                   <h3>{{totalDespesas}}<sup style="font-size: 20px">R$</sup></h3>
                   <p>Total Despesas</p>
-                  <p>Qtd Lancamentos : {{qtdLancemeento}}</p>
+                  <p>Lancamentos : {{qtdLancemeento}}</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
@@ -44,11 +44,11 @@
               <tr ng-repeat="despesa in despesaList | filter: buscarDespesa">
                   <td hidden>{{despesa.id}}</td>
                   <td>{{despesa.descricao}}</td>
-                  <td>{{despesa.valor}}</td>
-                  <td>Conta</td>
-                  <td>Banco</td>
-                  <td>Categoria</td>
-                  <td>{{despesa.data_vencimento}}</td>
+                  <td>{{despesa.valor | currency: "R$"}}</td>
+                  <td>{{despesa.conta}}</td>
+                  <td>{{despesa.banco}}</td>
+                  <td>{{despesa.categoria}}</td>
+                  <td>{{despesa.data_criacao}}</td>
                   <td>{{despesa.data_vencimento}}</td>
                   <td>{{despesa.pago}}</td>
                   <td>{{despesa.user}}</td>

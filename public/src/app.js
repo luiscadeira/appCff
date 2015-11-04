@@ -104,6 +104,22 @@ app.config(
                 {
                     templateUrl : '../dashboard/dashBoard.html',
                 })
+                .when('/relatorios', 
+                {
+                    templateUrl : '../Relatorios/Template/relatorioIndex.html',
+                })
+                .when('/regras', 
+                {
+                    templateUrl : '../Regras/Template/regrasIndex.html',
+                })
+                 .when('/newRegra', 
+                {
+                    templateUrl : '../Regras/Template/regrasDetalhes.html',
+                })
+                .when('/orcamento', 
+                {
+                    templateUrl : '../Orcamento/Template/orcamentoIndex.html',
+                })
 				.otherwise({ redirectTo: '/dash'});
 	    }
 	]

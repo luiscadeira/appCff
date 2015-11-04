@@ -53,8 +53,11 @@ app.controller('ContaCtrl', ['$scope', 'ContaService','StorageData','$location',
 	            numero      : $scope.conta.numero,
 	            banco_id    : $scope.conta.banco,
 	            status      : 1, 
-	            familia_id  : StorageData.getFamilia()
+	            familia_id  : StorageData.getFamilia(),
+              saldo       : $scope.conta.saldoInicial
 	        }
+
+          de(conta);
 
 	        var res = ContaService.create(conta, 
 	        	function(sucess) {

@@ -27,7 +27,7 @@
               nome        : $scope.banco.nome,
               agencia     : $scope.banco.agencia,
               status      : 1, 
-              familia_id : StorageData.getFamilia()
+              familia_id : StorageData.getFamilia(),
             }
 
           var res = BancoService.create(banco, 

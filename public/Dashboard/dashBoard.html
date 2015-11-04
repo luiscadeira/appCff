@@ -1,0 +1,71 @@
+               
+<div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>+ 80<sup style="font-size: 20px">R$</sup></h3>
+                  <p>Situação</p>
+                </div>
+                <div class="icon">
+                  <i class="fa  fa-money"></i>
+                </div>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>180<sup style="font-size: 20px">R$</sup></h3>
+                  <p>Receita</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#/receitas" class="small-box-footer">
+                  Mais informações <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3>100<sup style="font-size: 20px">R$</sup></h3>
+                  <p>Despesa</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#/despesas" class="small-box-footer">
+                  Mais informações <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+          </div><!-- /.row -->
+          <!-- DONUT CHART -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Receitas / Despesas</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body chart-responsive">
+                  <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+             
+              <script type="text/javascript">
+				var donut = new Morris.Donut({
+				element: 'sales-chart',
+				resize: true,
+				colors: ["#f56954","#00a65a"],
+				data: [
+					{label: "Despesas R$", value: 100},
+					{label: "Receitas R$", value: 180}
+				],
+				hideHover: 'auto'
+				});
+              </script>

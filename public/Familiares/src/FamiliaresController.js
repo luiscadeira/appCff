@@ -9,8 +9,9 @@ angular.module('app')
     
     if(StorageData.getFamilia() && $location.path() != '/newFamiliar') {
       FamiliaresService.query(function(data) {
+        de(data);
 
-	      $scope.familiares = data._embedded.user;
+	        $scope.familiares = data._embedded.user;
           $scope.familia = data._embedded.user[0].familia;
       });
     }

@@ -21,13 +21,15 @@
               <tr>
                 <th hidden>ID</th>
                 <th>Numero</th>
+                <th>Saldo</th>
                 <th>Banco</th>
                 <th>Ações</th>
               </tr>
               <tr ng-repeat="conta in contas | filter: buscarBanco">
                 <td hidden>{{conta.id}}</td>
                 <td>{{conta.numero}}</td>
-                <td>{{conta.banco.nome}}</td>
+                <td>{{conta.saldo | currency: "R$"}}</td>
+                <td>{{conta.banco}}</td>
                 <td>
                   <button class="btn btn-danger" ng-click="delete(conta)"><i class='fa fa-trash'></i>  Remover</button>
                   <button class="btn btn-primary" ng-click="editConta(conta)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>
