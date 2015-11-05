@@ -47,6 +47,9 @@ app.config(
                 .when('/despesas', {
                     templateUrl: 'Despesa/Templates/despesaIndex.html',
                 })
+                .when('/newDespesa', {
+                    templateUrl: 'Despesa/Templates/newDespesa.html',
+                })
 
 				.when('/login', 
 				{
@@ -120,6 +123,7 @@ app.config(
                 {
                     templateUrl : '../Orcamento/Template/orcamentoIndex.html',
                 })
+
 				.otherwise({ redirectTo: '/dash'});
 	    }
 	]
