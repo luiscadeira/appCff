@@ -12,5 +12,3 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Rodando na porta', app.get('port'));
 });
-
-

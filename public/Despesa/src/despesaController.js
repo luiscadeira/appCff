@@ -4,11 +4,22 @@
 	app.controller('DespesaCtrl', ['$scope', 'DespesaService','$location','StorageData','Notification','ContaService','CategoriaService',
 		function ($scope,DespesaService,$location,StorageData,Notification,ContaService,CategoriaService) {
 
-		    
+
 
       $scope.novaDespesa = function() {
       	$location.path('/newDespesa');
       }
+
+			$scope.createDespesa = function () {
+				console.log($scope.despesa.dataVencimento);
+				$scope.despesa.idUser = StorageData.getValue('id');
+				DespesaService.create($scope.despesa, function(success){
+						de(success);
+				}, function(error){
+					de(error);
+				});
+
+			}
 
 			if(StorageData.getFamilia() && $location.path() != '/newDespesa') {
 				DespesaService.query().$promise.then(
@@ -79,10 +90,9 @@ app.controller('DespesaDetalhe',['$scope','$location','$routeParams','DespesaSer
         BancoService.show({id: $routeParams.id}, function(data) {
           $scope.banco = data[0];
         });
-        
+
 }]);
 
 
 
 })();
-

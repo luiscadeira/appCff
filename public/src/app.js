@@ -5,12 +5,12 @@ var app = angular.module('app',
       'ngResource',
       'LocalStorageModule',
       'ui-notification',
-       'blockUI',    
+       'blockUI',
        'chart.js'
      ]
      );
 
-BASE_URL = "http://192.168.25.2:666";
+BASE_URL = "http://localhost:666";
 
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('APIInterceptor');
@@ -23,11 +23,11 @@ app.service('APIInterceptor',['StorageData','$location',
     service.request = function(config) {
         var urlAtual = $location.path();
         var id_familia = StorageData.getFamilia();
-     
+
         if((!id_familia || 0 === id_familia) && '/register' !== urlAtual )  {
            $location.path('/login');
-        }   
-        return config; 
+        }
+        return config;
     };
 }]);
 
@@ -52,79 +52,79 @@ app.config(
                     templateUrl: 'Despesa/Templates/newDespesa.html',
                 })
 
-				.when('/login', 
+				.when('/login',
 				{
 					templateUrl	: '../Auth/template/login.html'
 				})
-				.when('/register', 
+				.when('/register',
 				{
 					templateUrl	: './Register/Templates/registerIndex.html'
 				})
-				.when('/familia', 
+				.when('/familia',
 				{
 					templateUrl	: '../Familia/Templates/familiasIndex.html',
 				})
 
-                .when('/familiares', 
+                .when('/familiares',
                 {
                     templateUrl : '../Familiares/Templates/familiaresIndex.html',
                 })
 
-                .when('/newFamiliar', 
+                .when('/newFamiliar',
                 {
                     templateUrl : '../Familiares/Templates/newFamiliar.html',
                 })
 
-                .when('/editFamiliar/:id', 
+                .when('/editFamiliar/:id',
                 {
                     templateUrl : '../Familiares/Templates/editFamiliar.html',
                 })
 
-                 .when('/contas', 
+                 .when('/contas',
                 {
                     templateUrl : '../Contas/Templates/contasIndex.html',
                 })
-                .when('/newContas', 
+                .when('/newContas',
                 {
                     templateUrl : '../Contas/Templates/newConta.html',
                 })
-                .when('/editContas/:id', 
+                .when('/editContas/:id',
                 {
                     templateUrl : '../Contas/Templates/editConta.html',
                 })
-                .when('/categorias', 
+                .when('/categorias',
                 {
                     templateUrl : '../Categorias/Templates/categoriasIndex.html',
                 })
-                 .when('/newCategoria', 
+                 .when('/newCategoria',
                 {
                     templateUrl : '../Categorias/Templates/newCategoria.html',
                 })
-                .when('/editCategoria/:id', 
+                .when('/editCategoria/:id',
                 {
                     templateUrl : '../Categorias/Templates/editCategoria.html',
                 })
-                .when('/dash', 
+                .when('/dash',
                 {
                     templateUrl : '../dashboard/dashBoard.html',
                 })
-                .when('/relatorios', 
+                .when('/relatorios',
                 {
                     templateUrl : '../Relatorios/Template/relatorioIndex.html',
                 })
-                .when('/regras', 
+                .when('/regras',
                 {
                     templateUrl : '../Regras/Template/regrasIndex.html',
                 })
-                 .when('/newRegra', 
+                 .when('/newRegra',
                 {
                     templateUrl : '../Regras/Template/regrasDetalhes.html',
                 })
-                .when('/orcamento', 
+                .when('/orcamento',
                 {
                     templateUrl : '../Orcamento/Template/orcamentoIndex.html',
                 })
-                .when('/receitas', 
+                .when('/receitas',
                 {
                     templateUrl : '../Receitas/Template/receitasIndex.html',
                 })
@@ -161,7 +161,7 @@ app.config(function(NotificationProvider) {
 app.controller('userCtrl',['$rootScope', '$scope', '$location', '$localStorage', 'Main', function($rootScope, $scope, $location, $localStorage, Main) {
         id_familia = localStorage.getItem('familias_id');
  		$scope.user = "Tiago";
-       
+
 }]);
 
 // Configurações do localstorage
@@ -178,4 +178,3 @@ function de(data){
     console.log(angular.toJson(data));
     return;
 }
-

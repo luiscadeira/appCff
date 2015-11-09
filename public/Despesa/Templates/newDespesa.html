@@ -5,7 +5,7 @@
       <h3 class="box-title">Adicionar Despesa </h3>
       </div><!-- /.box-header -->
       <!-- form start -->
-      <form role="form" name="newBanco">
+      <form role="form" name="newDespesa">
         <div class="box-body">
           <div class="form-group">
             <label for="nome">Descrição</label>
@@ -17,34 +17,47 @@
           </div>
           <div class="form-group">
             <label for="agencia">Conta</label>
-            <select class="form-control" ng-model="despesa.conta" required>
+            <select class="form-control" ng-model="despesa.contaId" required>
               <option ng-repeat="conta in contasList" value="{{conta.id}}">{{conta.numero}}</option>
             </select>
           </div>
           <div class="form-group">
             <label for="agencia">Categoria</label>
-            <select class="form-control" ng-model="despesa.categoria" required>
+            <select class="form-control" ng-model="despesa.categoriaId" required>
               <option ng-repeat="categoria in categoriasList" value="{{categoria.id}}">{{categoria.categoria}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Data Vencimento:</label>
+            <label>Data Venciomento:</label>
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-              <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" required>
+              <input  ng-model="despesa.dataVencimento" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
               </div><!-- /.input group -->
-            </div>
+              </div><!-- /.form group -->
             <div class="checkbox">
               <label>
-                <input type="checkbox"> Pago?
+                <input ng-model="despesa.pago" type="checkbox"> Pago?
               </label>
             </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-block btn-success" ng-click="createdespesa()" ng-disabled="newdespesa.$invalid">Adicionar</button>
+              <button type="submit" class="btn btn-block btn-success" ng-click="createDespesa()" ng-disabled="newDespesa.$invalid">Adicionar</button>
               <button type="submit" class="btn btn-block btn-danger"  ng-click="voltar()">Voltar</button>
             </div>
           </form>
         </div>
       </div>
+
+
+      <script type="text/javascript">
+      $(function () {
+      //Datemask dd/mm/yyyy
+      $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+      //Datemask2 mm/dd/yyyy
+      $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+      //Money Euro
+      $("[data-mask]").inputmask();
+      //Date range picker
+      });
+      </script>
