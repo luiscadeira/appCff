@@ -5,11 +5,12 @@ var app = angular.module('app',
       'ngResource',
       'LocalStorageModule',
       'ui-notification',
-       'blockUI'
+       'blockUI',    
+       'chart.js'
      ]
      );
 
-BASE_URL = "http://localhost:666";
+BASE_URL = "http://192.168.25.2:666";
 
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('APIInterceptor');
@@ -122,6 +123,10 @@ app.config(
                 .when('/orcamento', 
                 {
                     templateUrl : '../Orcamento/Template/orcamentoIndex.html',
+                })
+                .when('/receitas', 
+                {
+                    templateUrl : '../Receitas/Template/receitasIndex.html',
                 })
 
 				.otherwise({ redirectTo: '/dash'});

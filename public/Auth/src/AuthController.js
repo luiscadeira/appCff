@@ -25,7 +25,6 @@
                     _addKey('perfil',      data.perfil);
                     _addKey('nome',        data.nome);
                     Notification.success( {message: data.message, delay: 5000});
-                    de(data.familia_id);
                     if( data.familia_id == "0" ) {
                         return $location.path( "/familia" );
                     }

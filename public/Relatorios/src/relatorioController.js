@@ -7,11 +7,16 @@
 
 		function RelatorioCtrl ($scope){
 
-			$scope.consultar = function(data){
+			$scope.consultar = function(){
 				de($scope.data);
-				de('teste');
 			}
+			var graficoCategoria1 = "teste";
+			$scope.grafico = {
+				categoria1 : 'Teste'
+			};
 
+
+			
 		};
 
 })()

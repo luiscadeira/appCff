@@ -32,8 +32,12 @@ angular.module('app')
           familia_id : StorageData.getFamilia()
         };
         FamiliaresService.create($scope.familiar, function(success) {
+          de(success);
           Notification.success( {message: 'Familiar adicionado com sucesso!', delay: 4000});
           $location.path('/familiares');
+        }, function(error) {
+          $scope.familiar.email = null;
+           Notification.error( {message: 'Email já cadastrado no sistema, informe outro!', delay: 4000});
         });
     };
   

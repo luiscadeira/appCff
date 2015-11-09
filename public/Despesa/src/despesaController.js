@@ -1,16 +1,16 @@
 (function(){
 	'use strict';
 
-	app.controller('DespesaCtrl', ['$scope', 'DespesaService','$location','StorageData','Notification',
-		function ($scope,DespesaService,$location,StorageData,Notification) {
+	app.controller('DespesaCtrl', ['$scope', 'DespesaService','$location','StorageData','Notification','ContaService','CategoriaService',
+		function ($scope,DespesaService,$location,StorageData,Notification,ContaService,CategoriaService) {
 
 		    
 
-        $scope.novaDespesa = function() {
-        	$location.path('/newDespesa');
-        }
+      $scope.novaDespesa = function() {
+      	$location.path('/newDespesa');
+      }
 
-			if(StorageData.getFamilia() && $location.path() != '/contas') {
+			if(StorageData.getFamilia() && $location.path() != '/newDespesa') {
 				DespesaService.query().$promise.then(
 				function(success) {
 					$scope.despesaList = success._embedded.despesas;
@@ -30,6 +30,20 @@
 
 				});
 			}
+
+
+      if(StorageData.getFamilia() && $location.path() != '/despesas')
+      {
+        ContaService.query(function(success){
+          $scope.contasList = success._embedded.contas;
+        });
+
+        CategoriaService.query(function(success){
+          $scope.categoriasList = success._embedded.categorias;
+        });
+      }
+
+
 
 	}]);
 

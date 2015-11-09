@@ -7,6 +7,7 @@ app.controller('UserCtrl',['$scope', '$http', '$window','localStorageService','$
   
     $scope.logOff = function() {
          localStorageService.clearAll();
+         $scope.user = null;
          $location.path( "/login" );
     }
 }]);
