@@ -6,7 +6,8 @@ var app = angular.module('app',
       'LocalStorageModule',
       'ui-notification',
        'blockUI',
-       'chart.js'
+       'chart.js',
+       'ui.mask'
      ]
      );
 

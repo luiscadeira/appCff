@@ -7,16 +7,18 @@
 
 		function RelatorioCtrl ($scope){
 
+			$scope.showCarts = false;
+
 			$scope.consultar = function(){
-				de($scope.data);
+				$scope.showCharts = !$scope.showCharts;
+				de($scope.consulta);
 			}
-			var graficoCategoria1 = "teste";
-			$scope.grafico = {
-				categoria1 : 'Teste'
-			};
 
 
-			
+			$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+            $scope.data = [300, 500, 100];
+
+
 		};
 
 })()

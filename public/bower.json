@@ -17,6 +17,7 @@
     "jquery": "2.1.1",
     "ngstorage": "~0.3.9",
     "angular-chart.js": "~0.8.5",
-    "Chart.js": "~1.0.2"
+    "Chart.js": "~1.0.2",
+    "angular-ui-mask": "~1.5.1"
   }
 }
