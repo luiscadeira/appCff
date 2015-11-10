@@ -11,8 +11,10 @@
       }
 
 			$scope.createDespesa = function () {
-				console.log($scope.despesa.dataVencimento);
-				$scope.despesa.idUser = StorageData.getValue('id');
+        var date = angular.element('dataVencimento').val();
+        de(date);
+        $scope.despesa.idUser = StorageData.getValue('id');
+				$scope.despesa.idFamiliar = StorageData.getValue('familia_id');
 				DespesaService.create($scope.despesa, function(success){
 						de(success);
 				}, function(error){

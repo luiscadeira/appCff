@@ -175,6 +175,6 @@ app.config(function (localStorageServiceProvider) {
 
 
 function de(data){
-    console.log(angular.toJson(data));
+    console.log((data));
     return;
 }
