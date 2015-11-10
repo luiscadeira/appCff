@@ -1,4 +1,4 @@
-  <div class="col-md-12">
+  <div class="col-md-12" ng-controller="OrcamentoCtrl">
 <div class="row">
       <div class="col-xs-12">
         <div class="box">
@@ -17,7 +17,7 @@
             <table class="table table-striped">
               <tr>
                   <th hidden>ID</th>
-                  <th>Descrição</th>
+                  <th>Ojetivo</th>
                   <th>Início</th>
                   <th>Valor Total</th>
                   <th>Tempo</th>
@@ -25,17 +25,20 @@
                   <th>Conta</th>
                   <th>Ações</th>
               </tr>
-              <tr ng-repeat="orcamento in orcamentoList | filter: buscaRegra">
+              <tr ng-repeat="orcamento in orcamentosList | filter: buscaRegra">
                   <td hidden>{{orcamento.id}}</td>
-                  <td>{{orcamento.id}}</td>
-                  <td>{{orcamento.orcamento}}</td>
+                  <td>{{orcamento.objetivo}}</td>
+                  <td>{{orcamento.data_inicio}}</td>
                   <td>{{orcamento.valor}}</td>
-                  <td>{{orcamento.categoria}}</td>
-                  <td>
+                  <td>{{orcamento.duracao}}</td>
+                  <td>{{orcamento.totalAtingido}}</td>
+                  <td>{{orcamento.conta}}</td>
+                  <td>                 
                   <button class="btn btn-danger" ng-click="delete(banco)"><i class='fa fa-trash'></i>  Remover</button>
                   <button class="btn btn-primary" ng-click="editBanco(banco)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>
+                  <button class="btn btn-warning" ng-click="editBanco(banco)"><i class='glyphicon glyphicon-chevron-down'></i> Estornar</button>
                   </td>
-                </td>
+                </tr>
               </tr>
             </table>
           </div><!-- /.box-body -->
