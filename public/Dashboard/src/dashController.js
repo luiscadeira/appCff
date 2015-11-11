@@ -2,9 +2,9 @@
     'use stric';
     angular.module('app')
         .controller('DashBoardCtrl', DashBoardCtrl);
-        DashBoardCtrl.$inject = ['$scope','DespesaService', 'StorageData'];
+        DashBoardCtrl.$inject = ['$scope','DespesaService', 'StorageData','Notification'];
 
-        function DashBoardCtrl($scope,DespesaService,StorageData) {
+        function DashBoardCtrl($scope,DespesaService,StorageData,Notification) {
 
 
 
@@ -24,6 +24,6 @@
                 });
             };
 
-          
+
         }
 })();

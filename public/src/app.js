@@ -129,6 +129,10 @@ app.config(
                 {
                     templateUrl : '../Receitas/Template/receitasIndex.html',
                 })
+                .when('/newReceita',
+                {
+                    templateUrl : '../Receitas/Template/receitaDetalhes.html',
+                })
 
 				.otherwise({ redirectTo: '/dash'});
 	    }
