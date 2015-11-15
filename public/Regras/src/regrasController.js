@@ -12,7 +12,6 @@
 					$location.path('/newRegra');
 				}
 
-
 				$scope.regrasList = [{
 					id: 1,
 					regra : 'Valores até',

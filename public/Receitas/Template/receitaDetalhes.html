@@ -1,0 +1,36 @@
+<div class="col-md-4" ng-controller="ReceitaCtrl">
+  <!-- Form Familia -->
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">Adicionar Receita </h3>
+      </div><!-- /.box-header -->
+      <!-- form start -->
+      <form role="form" name="newDespesa">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="nome">Descrição</label>
+            <input id="nome" type="text" class="form-control" autofocus  ng-model="receita.descricao" placeholder="Descrição da receita" autofocus required>
+          </div>
+          <div class="form-group">
+            <label for="nome">Valor</label>
+            <input id="nome" type="number" class="form-control" autofocus  ng-model="receita.valor" placeholder="Valor da receita" required>
+          </div>
+          <div class="form-group">
+            <label for="agencia">Conta</label>
+            <select class="form-control" ng-model="receita.contaId" required>
+              <option ng-repeat="conta in contasList" value="{{conta.id}}">{{conta.numero}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="agencia">Categoria</label>
+            <select class="form-control" ng-model="receita.categoriaId" required>
+              <option ng-repeat="categoria in categoriasList" value="{{categoria.id}}">{{categoria.categoria}}</option>
+            </select>
+          </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-block btn-success" ng-click="createDespesa()" ng-disabled="newDespesa.$invalid">Adicionar</button>
+              <button type="submit" class="btn btn-block btn-danger"  ng-click="voltar()">Voltar</button>
+            </div>
+          </form>
+        </div>
+      </div>
