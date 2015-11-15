@@ -4,7 +4,7 @@
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>{{totalDespesas}}<sup style="font-size: 20px">R$</sup></h3>
+                  <h3>{{totalDespesas| currency: "R$"}}</h3>
                   <p>Total Despesas</p>
                   <p>Lancamentos : {{qtdLancemeento}}</p>
                 </div>
@@ -55,7 +55,9 @@
                   <td>
                   <button class="btn btn-danger" ng-click="delete(despesa)"><i class='fa fa-trash'></i>  Remover</button>
                   <button class="btn btn-primary" ng-click="editDespesa(despesa)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>
+                  <span ng-if="despesa.pago === 'A pagar'">
                    <button class="btn btn-flat btn-warning" ng-click="pagar(despesa)"><i class='glyphicon glyphicon-chevron-down'></i> Pagar</button>
+                   </span>
                   </td>
                 </td>
               </tr>

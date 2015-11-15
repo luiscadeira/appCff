@@ -12,7 +12,6 @@
 					$location.path('/newRegra');
 				}
 
-				if()
 
 				$scope.regrasList = [{
 					id: 1,
@@ -24,7 +23,7 @@
 				{
 					id: 2,
 					regra : 'Nº Lançamentos',
-					valor : '100 R$',
+					valor : '100',
 					categoria: 'Beleza'
 
 				},

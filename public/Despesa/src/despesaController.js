@@ -9,15 +9,22 @@
       $scope.novaDespesa = function() {
       	$location.path('/newDespesa');
       }
+      $scope.voltar = function()
+      {
+        $location.path('/despesas');
+      }
+
 
 			$scope.createDespesa = function () {
-        var date = angular.element('dataVencimento').val();
-        de(date);
-        $scope.despesa.idUser = StorageData.getValue('id');
-				$scope.despesa.idFamiliar = StorageData.getValue('familia_id');
+
+        $scope.despesa.idUser     = StorageData.getValue('id');
+				$scope.despesa.idFamilia  = StorageData.getValue('familia_id');
+        de(angular.toJson($scope.despesa));
 				DespesaService.create($scope.despesa, function(success){
-						de(success);
+            Notification.success({message: 'Despesas criada com sucesso' , delay: 9000});
+            $location.path('/despesas');
 				}, function(error){
+          Notification.error({message: 'Erro ao cadastrar Despesas:'+error , delay: 9000});
 					de(error);
 				});
 

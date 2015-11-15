@@ -33,12 +33,12 @@
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-              <input id="dataVencimento" ng-model="dataVencimento" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+              <input ng-model="despesa.dataVencimentoDespesa" type="text" class="form-control"  data-mask ui-mask="99/99/9999"/>
               </div><!-- /.input group -->
               </div><!-- /.form group -->
             <div class="checkbox">
               <label>
-                <input ng-model="despesa.pago" type="checkbox"> Pago?
+                <input ng-model="despesa.isPago" type="checkbox"> Pago?
               </label>
             </div>
             <div class="box-footer">
