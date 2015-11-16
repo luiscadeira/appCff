@@ -2,7 +2,7 @@
   <div class="col-lg-3 col-xs-6">
     <div class="small-box bg-aqua">
       <div class="inner">
-        <h3>+ 80<sup style="font-size: 20px">R$</sup></h3>
+        <h3>{{ totalReceita - totalDespesas  |currency: "R$"}}<sup style="font-size: 20px"></sup></h3>
         <p>Situação</p>
       </div>
       <div class="icon">
@@ -14,7 +14,7 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>180<sup style="font-size: 20px">R$</sup></h3>
+          <h3>{{totalReceita | currency: "R$"}}<sup style="font-size: 20px">R$</sup></h3>
           <p>Receita</p>
         </div>
         <div class="icon">
@@ -29,7 +29,7 @@
         <!-- small box -->
         <div class="small-box bg-red">
           <div class="inner">
-            <h3>{{totalDespesas}}<sup style="font-size: 20px">R$</sup></h3>
+            <h3>{{totalDespesas |currency: "R$"}}<sup style="font-size: 20px">R$</sup></h3>
             <p>Despesa</p>
           </div>
           <div class="icon">
@@ -43,7 +43,7 @@
         <br>
         <hr/>
 
-        <div class="col-lg-6 col-xs-6">
+        <div class="col-lg-9 col-xs-9">
           <div class="box box-info">
             <div class="box-header">
               <h3 class="box-title"> Despesa / Receita</h3>

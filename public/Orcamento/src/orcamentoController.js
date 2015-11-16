@@ -16,6 +16,11 @@
                 });
             }
 
+            $scope.novo = function()
+            {
+                $location.path('/newOrcamento');
+            }
+
 	 	}
 
 })();

@@ -2,13 +2,51 @@
 	'use strict';
 	angular.module('app')
 		.controller('ReceitaCtrl',ReceitaCtr);
-		ReceitaCtr.$inject = ['$scope','ReceitaService','StorageData','Notification','$location'];
+		ReceitaCtr.$inject = ['$scope','ReceitaService','StorageData','Notification','$location','ContaService', 'CategoriaService'];
 
-		function ReceitaCtr($scope, ReceitaService,StorageData,Notification,$location) {
+		function ReceitaCtr($scope, ReceitaService,StorageData,Notification,$location,ContaService,CategoriaService) {
 
 			$scope.novaReceita = function(){
-				$location.path('newReceita');
+				$location.path('/newReceita');
 			}
+
+			$scope.voltar = function()
+			{
+				$location.path('/receitas')
+			}
+
+
+	  if(StorageData.getFamilia() && $location.path() != '/receitas')
+      {
+        ContaService.query(function(success){
+          $scope.contasList = success._embedded.contas;
+        });
+
+        CategoriaService.query(function(success){
+          $scope.categoriasList = success._embedded.categorias;
+        });
+
+
+
+      }
+
+      $scope.save =  function(receita)
+      {
+      	
+      	        receita.idUser     = StorageData.getValue('id');
+				receita.idFamilia  = StorageData.getValue('familia_id');
+				de(angular.toJson(receita));
+
+        de(angular.toJson($scope.despesa));
+				ReceitaService.create($scope.despesa, function(success){
+            Notification.success({message: 'Receita criada com sucesso' , delay: 9000});
+            $location.path('/despesas');
+				}, function(error){
+          Notification.error({message: 'Erro ao cadastrar Receita:'+error.statusText , delay: 9000});
+					de(error);
+				});
+
+      }
 
 
 		    if(StorageData.getFamilia() && $location.path() != '/newReceita') {

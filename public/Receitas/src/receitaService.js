@@ -13,7 +13,11 @@ app.factory('ReceitaService',['$resource', 'StorageData',
       params: {id_familia : '@id_familia'}
     },
 
-    create: { method: 'POST' },
+    create: { 
+      method: 'POST',
+      url : BASE_URL + "/receitas?familia_id="+id_familia 
+    },
+    
     'delete': {
     	method:'DELETE'
     },
