@@ -3,16 +3,21 @@
 	angular.module('app')
 		.factory('CategoriaService', ['$resource','StorageData',
 			function($resource,StorageData){
-  
+
 				  return $resource(BASE_URL + "/categorias/:id", {}, {
-				    
-				    query: { 
+
+				    query: {
 				      method : "GET",
 				      isArray: false ,
 				      url : BASE_URL + "/categorias?familia_id="+StorageData.getFamilia(),
 				      params: {id_familia : '@id_familia'}
 
 				    },
+						contadorCategoriasDespesa : {
+							method : "GET",
+							isArray: false ,
+							url : BASE_URL + "/categorias?familia_id="+StorageData.getFamilia()+'&tipo=nomes'
+						},
 				    create: { method: 'POST' },
 				    'delete': {
 				    	method:'DELETE'
@@ -22,6 +27,6 @@
 				  });
 
 				}]);
-			
+
 
 })();
