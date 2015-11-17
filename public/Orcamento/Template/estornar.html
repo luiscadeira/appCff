@@ -9,7 +9,7 @@
         <div class="box-body">
           <div class="form-group">
             <label for="nome">Valor</label>
-            <input id="nome" type="number" class="form-control" autofocus  ng-model="orcamento.valor" placeholder="Valor do estorno" required>
+            <input id="nome" type="number" class="form-control" autofocus ng-pattern="/^[0-9]+$/"  ng-model="orcamento.valor" placeholder="Valor do estorno" required>
           </div>
            <div class="form-group">
             <label for="agencia">Conta</label>

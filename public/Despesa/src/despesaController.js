@@ -19,8 +19,12 @@
 
         $scope.despesa.idUser     = StorageData.getValue('id');
 				$scope.despesa.idFamilia  = StorageData.getValue('familia_id');
-        de(angular.toJson($scope.despesa));
-				DespesaService.create($scope.despesa, function(success){
+
+			  $scope.dataVencimentoDespesa = new Date($scope.dataVencimentoDespesa);
+			  var date = 	$scope.dataVencimentoDespesa.toLocaleString();
+				$scope.despesa.dataVencimentoDespesa = date;
+				de(angular.toJson($scope.despesa));
+						DespesaService.create($scope.despesa, function(success){
             Notification.success({message: 'Despesas criada com sucesso' , delay: 9000});
             $location.path('/despesas');
 				}, function(error){
