@@ -2,10 +2,10 @@ app.factory('DespesaService',['$resource', 'StorageData',
   function ($resource,StorageData) {
 
   var id_familia = StorageData.getFamilia();
-   
+
   return $resource(BASE_URL + "/despesas/:id", {}, {
 
-    query: { 
+    query: {
       method : "GET",
       isArray: false ,
       url : BASE_URL + "/despesas?familia_id="+id_familia,
@@ -13,6 +13,7 @@ app.factory('DespesaService',['$resource', 'StorageData',
     },
 
     create: { method: 'POST' },
+
     'delete': {
     	method:'DELETE'
     },
@@ -21,6 +22,6 @@ app.factory('DespesaService',['$resource', 'StorageData',
 
     show: { method: 'GET' },
   });
-	
+
 
 }]);

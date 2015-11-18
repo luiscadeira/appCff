@@ -52,6 +52,9 @@ app.config(
                 .when('/newDespesa', {
                     templateUrl: 'Despesa/Templates/newDespesa.html',
                 })
+                .when('/editDespesa/:id', {
+                    templateUrl: 'Despesa/Templates/editDespesa.html',
+                })
 
 				.when('/login',
 				{

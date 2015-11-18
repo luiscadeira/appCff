@@ -14,6 +14,10 @@
         $location.path('/despesas');
       }
 
+			$scope.editDespesa = function (despesa) {
+					$location.path('/editDespesa/' + despesa.id);
+			};
+
 			$scope.delete = function(despesa) {
 			if (confirm("Remover  Despesa ?")) {
 						DespesaService.delete({id: despesa.id}, function(data) {
@@ -24,7 +28,6 @@
 							Notification.error( {message: 'Erro ao remover Despesa: '+banco.nome+'.\n'+error.statusText, delay: 2000});
 						});
 					}
-
 			 };
 
 
@@ -113,8 +116,8 @@ app.controller('DespesaDetalhe',['$scope','$location','$routeParams','DespesaSer
             $location.path('/bancos');
         };
 
-        BancoService.show({id: $routeParams.id}, function(data) {
-          $scope.banco = data[0];
+        DespesaService.show({id: $routeParams.id}, function(data) {
+          $scope.despesa = data[0];
         });
 
 }]);
