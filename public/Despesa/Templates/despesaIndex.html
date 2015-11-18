@@ -41,7 +41,9 @@
                   <th>Usuário</th>
                   <th>Ações</th>
               </tr>
+
               <tr ng-repeat="despesa in despesaList | filter: buscarDespesa">
+                {{despesa.pago}}
                   <td hidden>{{despesa.id}}</td>
                   <td>{{despesa.descricao}}</td>
                   <td>{{despesa.valor | currency: "R$"}}</td>
@@ -53,8 +55,10 @@
                   <td>{{despesa.pago}}</td>
                   <td>{{despesa.user}}</td>
                   <td>
-                  <button class="btn btn-danger" ng-click="delete(despesa)"><i class='fa fa-trash'></i>  Remover</button>
-                  <button class="btn btn-primary" ng-click="editDespesa(despesa)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>
+                  <span ng-if="despesa.pago !== 'Pago' ">
+                    <button class="btn btn-danger" ng-click="delete(despesa)" ng-click="delete(despesa)"><i class='fa fa-trash' ></i>  Remover</button>
+                    <button class="btn btn-primary" ng-click="editDespesa(despesa)"><i class='glyphicon glyphicon-pencil'></i> Editar</button>
+                  </span>
                   <span ng-if="despesa.pago === 'A pagar'">
                    <button class="btn btn-flat btn-warning" ng-click="pagar(despesa)"><i class='glyphicon glyphicon-chevron-down'></i> Pagar</button>
                    </span>
@@ -68,11 +72,6 @@
         <button class="btn btn-success" ng-click="novaDespesa()"><i class="fa fa-plus"></i> Adicionar Despesa</button>
       </div>
       </div>
-   
+
 </div>
 </div>
-
-
-
-
-

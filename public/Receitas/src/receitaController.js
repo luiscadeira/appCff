@@ -32,15 +32,14 @@
 
       $scope.save =  function(receita)
       {
-      	
-      	        receita.idUser     = StorageData.getValue('id');
+
+      	receita.idUser     = StorageData.getValue('id');
 				receita.idFamilia  = StorageData.getValue('familia_id');
 				de(angular.toJson(receita));
 
-        de(angular.toJson($scope.despesa));
-				ReceitaService.create($scope.despesa, function(success){
+				ReceitaService.create(receita, function(success){
             Notification.success({message: 'Receita criada com sucesso' , delay: 9000});
-            $location.path('/despesas');
+            $location.path('/recetas');
 				}, function(error){
           Notification.error({message: 'Erro ao cadastrar Receita:'+error.statusText , delay: 9000});
 					de(error);

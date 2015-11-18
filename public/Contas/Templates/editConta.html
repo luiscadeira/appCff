@@ -17,8 +17,6 @@
       <select class="form-control" ng-model="conta.banco"  ng-options="banco.nome for banco in bancoList track by conta.banco.id">
         <option>...</option>
       </select>
-
-      <pre>{{banco.nome | json}}</pre>
     </div>
   <div class="box-footer">
     <button type="submit" class="btn btn-block btn-success" ng-click="updateBanco()" ng-disabled="newConta.$invalid">Salvar</button>

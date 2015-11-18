@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
 
-	app.controller('DespesaCtrl', ['$scope', 'DespesaService','$location','StorageData','Notification','ContaService','CategoriaService',
-		function ($scope,DespesaService,$location,StorageData,Notification,ContaService,CategoriaService) {
+	app.controller('DespesaCtrl', ['$scope', 'DespesaService','$location','StorageData','Notification','ContaService','CategoriaService','$route',
+		function ($scope,DespesaService,$location,StorageData,Notification,ContaService,CategoriaService, $route) {
 
 
 
@@ -13,6 +13,19 @@
       {
         $location.path('/despesas');
       }
+
+			$scope.delete = function(despesa) {
+			if (confirm("Remover  Despesa ?")) {
+						DespesaService.delete({id: despesa.id}, function(data) {
+							Notification.info( {message: 'Despesa removido com sucesso', delay: 2000});
+							 $route.reload()
+						},
+						function(error) {
+							Notification.error( {message: 'Erro ao remover Despesa: '+banco.nome+'.\n'+error.statusText, delay: 2000});
+						});
+					}
+
+			 };
 
 
 			$scope.createDespesa = function () {
