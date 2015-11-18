@@ -89,8 +89,8 @@
 
 
 
-app.controller('DespesaDetalhe',['$scope','$location','$routeParams','DespesaService', 'StorageData','Notification',
-  function($scope,$location,$routeParams,DespesaService,StorageData,Notification) {
+app.controller('DespesaDetalhe',['$scope','$location','$routeParams','DespesaService', 'StorageData','Notification','ContaService','CategoriaService',
+  function($scope,$location,$routeParams,DespesaService,StorageData,Notification, ContaService, CategoriaService) {
 
 
     $scope.updateDespesa = function () {
@@ -118,7 +118,19 @@ app.controller('DespesaDetalhe',['$scope','$location','$routeParams','DespesaSer
 
         DespesaService.show({id: $routeParams.id}, function(data) {
           $scope.despesa = data[0];
+					$scope.dataVencimentoDespesa = new Date($scope.despesa.data_vencimento).toLocaleString();
         });
+
+				if(StorageData.getFamilia() && $location.path() != '/despesas')
+				{
+					ContaService.query(function(success){
+						$scope.contasList = success._embedded.contas;
+					});
+
+					CategoriaService.query(function(success){
+						$scope.categoriasList = success._embedded.categorias;
+					});
+				}
 
 }]);
 
