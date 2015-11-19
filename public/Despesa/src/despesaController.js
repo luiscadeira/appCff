@@ -71,6 +71,17 @@
 				});
 			}
 
+			$scope.pagar = function (despesa) {
+				var id = despesa.id;
+				despesa.pago	 = true;
+				DespesaService.update({id, despesa}, function(success){
+						Notification.info({message: 'Despesa atualizada com sucesso.' , delay: 9000});
+				}, function(error) {
+						Notification.error({message: 'Erro ao atualizar despesa.' , delay: 9000});
+				})
+				de(despesa);
+			}
+
 
       if(StorageData.getFamilia() && $location.path() != '/despesas')
       {
@@ -138,6 +149,8 @@ app.controller('DespesaDetalhe',['$scope','$location','$routeParams','DespesaSer
 					}
 					return valido;
 				}
+
+
 
         DespesaService.show({id: $routeParams.id}, function(data) {
           $scope.despesa = data[0];

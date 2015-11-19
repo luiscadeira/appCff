@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Quantidade de Mebros</label>
-      <input type="number" class="form-control" id="exampleInputPassword1"  ng-model="familia.qtdMembros" placeholder="Quantidade de mebros da familia" required>
+      <input type="number" class="form-control" ng-pattern = "/^[1-9]+$/" ui-money-mask id="exampleInputPassword1"  ng-model="familia.qtdMembros" placeholder="Quantidade de mebros da familia" required>
     </div>
   <div class="box-footer">
     <button ng-disabled="FamiliaForm.$invalid" type="submit" class="btn btn-block btn-success" ng-click="save(familia.id)">Salvar</button>
