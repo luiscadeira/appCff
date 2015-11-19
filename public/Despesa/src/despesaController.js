@@ -94,32 +94,54 @@ app.controller('DespesaDetalhe',['$scope','$location','$routeParams','DespesaSer
 
 
     $scope.updateDespesa = function () {
+			var validate = true;
+			$scope.despesa.idUser     = StorageData.getValue('id');
+			$scope.despesa.idFamilia  = StorageData.getValue('familia_id');
 
-      var despesa = {
-              id          : $scope.despesa.id,
-              nome        : $scope.despesa.nome,
-              agencia     : $scope.despesa.agencia,
-              familia_id  : StorageData.getFamilia(),
-              status      : 1
-            }
-            DespesaService.update(banco, function(data) {
-                Notification.info( {message: 'Despesa: '+despesa.descricao+' alterado com sucesso', delay: 2000} );
+			$scope.dataVencimentoDespesa = new Date($scope.dataVencimentoDespesa);
+			var date = 	$scope.dataVencimentoDespesa.toLocaleString();
+			$scope.despesa.dataVencimentoDespesa = date;
+						validate =  this.validate();
+						de(validate);
+						if(!validate) {
+							return;
+						}
+
+            DespesaService.update($scope.despesa, function(data) {
+                Notification.info( {message: 'Despesa: '+$scope.despesa.descricao+' alterado com sucesso', delay: 2000} );
                 $location.path('/despesas');
               },
               function(error) {
-                Notification.error( {message: 'Erro ao remover Despesa: '+banco.nome+'.\n'+error.statusText, delay: 2000});
+                Notification.error( {message: 'Erro ao atualizar Despesa: '+$scope.despesa.descricao+'.\n'+error.statusText, delay: 2000});
                 $location.path('/despesas');
            });
         }
 
         $scope.voltar = function () {
-            $location.path('/bancos');
+            $location.path('/despesas');
         };
+
+				$scope.validate = function() {
+					var valido = true;
+					if(!$scope.despesa.descricao) {
+						alert('Infome a descrição da despesa');
+						valido = false;
+					}
+					if(!$scope.despesa.valor) {
+						alert('Infome o valor da despesa');
+						valido = false;
+					}
+
+					if(!$scope.dataVencimentoDespesa) {
+						alert('Infome a data de vencimento da despesa');
+						valido = false;
+					}
+					return valido;
+				}
 
         DespesaService.show({id: $routeParams.id}, function(data) {
           $scope.despesa = data[0];
-					$scope.dataVencimentoDespesa = new Date($scope.despesa.data_vencimento).toLocaleString();
-        });
+	      });
 
 				if(StorageData.getFamilia() && $location.path() != '/despesas')
 				{

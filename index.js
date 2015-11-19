@@ -12,3 +12,18 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Rodando na porta', app.get('port'));
 });
+
+var express = require('express')
+  , http = require('http')
+  , app = express()
+  , server = http.createServer(app)
+
+app.get('/',function(req,res){
+  response.sendfile('public/index.html');
+})
+
+server.listen(8000,'0.0.0.0',function(){
+ server.close(function(){
+   server.listen(8001,'0.0.0.0')
+ })
+})

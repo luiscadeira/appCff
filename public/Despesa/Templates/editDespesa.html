@@ -7,7 +7,10 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form name="newDespesa" role="form">
+    <form name="editDespesa" role="form">
+      <pre>
+        {{editDespesa}}
+      </pre>
       <div class="box-body">
         <div class="form-group">
           <label for="nome">Descrição</label>
@@ -19,9 +22,9 @@
         </div>
         <div class="form-group">
           <label for="agencia">Conta</label>
-          <select ng-model="despesa.contaId" class="form-control" ng-options="conta as conta.numero for conta in contasList track by despesa.contaId" required>
-           <option>...</option>
-          </select>
+          <select class="form-control" ng-model="despesa.contaId" required>
+              <option ng-repeat="conta in contasList" value="{{conta.id}}">{{conta.numero}}</option>
+            </select>
         </div>
         <div class="form-group">
           <label for="agencia">Categoria</label>
@@ -46,25 +49,9 @@
               </label>
             </div>
             <div class="box-footer">
-              <button class="btn btn-block btn-success" ng-click="createDespesa()" ng-disabled="newDespesa.$invalid" type="submit">Adicionar</button>
+              <button class="btn btn-block btn-success" ng-click="updateDespesa()" type="submit">Salvar</button>
               <button class="btn btn-block btn-danger" ng-click="voltar()" type="submit">Voltar</button>
             </div>
           </form>
         </div>
       </div>
-
-      <script type="text/javascript">
-        $(function() {
-          //Datemask dd/mm/yyyy
-          $("#datemask").inputmask("dd/mm/yyyy", {
-            "placeholder": "dd/mm/yyyy"
-          });
-          //Datemask2 mm/dd/yyyy
-          $("#datemask2").inputmask("mm/dd/yyyy", {
-            "placeholder": "mm/dd/yyyy"
-          });
-          //Money Euro
-          $("[data-mask]").inputmask();
-          //Date range picker
-        });
-      </script>
