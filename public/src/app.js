@@ -110,7 +110,7 @@ app.config(
                 })
                 .when('/dash',
                 {
-                    templateUrl : '../dashboard/dashBoard.html',
+                    templateUrl : '../Dashboard/dashBoard.html',
                 })
                 .when('/relatorios',
                 {
