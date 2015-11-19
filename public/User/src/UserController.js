@@ -11,7 +11,9 @@ controller('UserCtrl', ['$scope','UserService','StorageData', function ($scope,U
 		perfil :StorageData.getValue('perfil')
 	};
 
-	
+	de(StorageData.getValue('perfil'));
+
+
 }])
 
 
