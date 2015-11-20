@@ -11,7 +11,7 @@ var app = angular.module('app',
      ]
      );
 
-BASE_URL = "http://177.220.169.84:89";
+BASE_URL = "http://177.220.169.84:333";
 
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('APIInterceptor');
