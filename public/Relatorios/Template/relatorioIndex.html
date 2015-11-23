@@ -1,78 +1,80 @@
 <div class="col-md-12" ng-controller="RelatorioCtrl">
-
   <div class="box box-info">
     <div class="box-header">
       <h3 class="box-title">Consultar</h3>
     </div>
     <form role="form" name="relatorioForm">
-    <div class="box-body">
+    <pre>{{dataAte}}</pre>
+  <pre>{{dataDe}}</pre>
+  <div class="box-body">
+    <div class="form-group">
+      <label>De:</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </div>
+        <input id="exampleInput" max="2015-12-31" min="2015-01-01"name="input" ng-model="dataDe" placeholder="yyyy-MM-dd" required type="date"/>
+        <!-- /.input group -->
+      </div>
+      </div><!-- /.form group -->
       <div class="form-group">
-        <label>De:</label>
+        <label>Até:</label>
         <div class="input-group">
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-          <input ng-model="consulta.de" type="text" class="form-control"  data-mask ui-mask="99/99/9999"/>
-          </div><!-- /.input group -->
-          </div><!-- /.form group -->
-
-          <div class="form-group">
-            <label>Até:</label>
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </div>
-              <input  ng-model="consulta.ate" type="text" class="form-control" data-mask ui-mask="99/99/9999" required/>
-              </div><!-- /.input group -->
-              </div><!-- /.form group -->
-              <div class="form-group" >
-                <label for="agencia">Tipo</label>
-                <select class="form-control" required ng-model="consulta.tipo" required>
-                  <option value="Despesa">Despesas</option>
-                  <option value="Receitas">Receitas</option>
-                </select>
-              </div>
-              <button class="btn btn-success" ng-click="consultar()" ng-disabled="relatorioForm.$invalid">Consultar</button><br>
-            </div>
-          </form>
-          </div>
-          <!-- charts -->
-          <span ng-if="showCharts">
-          <div class="col-md-6">
-            <div class="box box-info">
-              <div class="box-header">
-                <h3 class="box-title"> {{consulta.tipo}} / Categoria</h3>
-              </div>
-              <canvas id="pie" class="chart chart-pie"chart-data="dataCategorias" chart-labels="labelsCategorias" chart-legend="true"></canvas>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box box-info">
-              <div class="box-header">
-                <h3 class="box-title"> {{consulta.tipo}} / Usuario</h3>
-              </div>
-              <canvas id="pie" class="chart chart-pie"chart-data="data" chart-labels="labels" chart-legend="true">
-              </canvas>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box box-info">
-              <div class="box-header">
-                <h3 class="box-title"> {{consulta.tipo}} / Receita</h3>
-              </div>
-              <canvas id="pie" class="chart chart-pie"chart-data="data" chart-labels="labels" chart-legend="true">
-              </canvas>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box box-info">
-              <div class="box-header">
-                <h3 class="box-title"> {{consulta.tipo}} / Categorias</h3>
-              </div>
-              <canvas id="pie" class="chart chart-pie"chart-data="data" chart-labels="labels" chart-legend="true">
-              </canvas>
-            </div>
-          </div>
-        </span>
-          <!-- charts -->
+          <input id="exampleInput" max="2015-12-31" min="2015-01-01" name="input" ng-model="dataAte" placeholder="yyyy-MM-dd" required type="date"/>
+          <!-- /.input group -->
         </div>
+        </div><!-- /.form group -->
+        <div class="form-group" >
+          <label for="agencia">Tipo</label>
+          <select class="form-control" required ng-model="consulta.tipo" required>
+            <option value="Despesa">Despesas</option>
+            <option value="Receitas">Receitas</option>
+          </select>
+        </div>
+        <button class="btn btn-success" ng-click="consultar()" ng-disabled="relatorioForm.$invalid">Consultar</button><br>
+      </div>
+    </form>
+  </div>
+  <!-- charts -->
+  <span ng-if="showCharts">
+    <div class="col-md-6">
+      <div class="box box-info">
+        <div class="box-header">
+          <h3 class="box-title"> {{consulta.tipo}} / Categoria</h3>
+        </div>
+        <canvas id="pie" class="chart chart-pie"chart-data="dataCategorias" chart-labels="labelsCategorias" chart-legend="true"></canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box box-info">
+        <div class="box-header">
+          <h3 class="box-title"> {{consulta.tipo}} / Usuario</h3>
+        </div>
+        <canvas id="pie" class="chart chart-pie"chart-data="data" chart-labels="labels" chart-legend="true">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box box-info">
+        <div class="box-header">
+          <h3 class="box-title"> {{consulta.tipo}} / Receita</h3>
+        </div>
+        <canvas id="pie" class="chart chart-pie"chart-data="data" chart-labels="labels" chart-legend="true">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="box box-info">
+        <div class="box-header">
+          <h3 class="box-title"> {{consulta.tipo}} / Categorias</h3>
+        </div>
+        <canvas id="pie" class="chart chart-pie"chart-data="data" chart-labels="labels" chart-legend="true">
+        </canvas>
+      </div>
+    </div>
+  </span>
+  <!-- charts -->
+</div>

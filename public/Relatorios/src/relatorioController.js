@@ -3,35 +3,37 @@
 	angular.module('app')
 		.controller('RelatorioCtrl',RelatorioCtrl );
 
-		RelatorioCtrl.$injet = ['$scope','CategoriaService', 'StorageData', '$location'];
+		RelatorioCtrl.$injet = ['$scope', 'StorageData', '$location','RelatorioService'];
 
-		function RelatorioCtrl ($scope,CategoriaService,StorageData, $location){
+		function RelatorioCtrl ($scope,StorageData, $location,RelatorioService){
 
 			$scope.showCarts = false;
 
 			$scope.consultar = function(){
-				$scope.showCharts = !$scope.showCharts;
-				de($scope.consulta);
+				 $scope.showCharts   = !$scope.showCharts;
+				 $scope.dataDe       = new Date($scope.dataDe);
+			     var dateDe          = $scope.dataDe.toLocaleString();
+			     dateDe = dateDe.substring(0, 10);		    
+				 $scope.dataAte     = new Date($scope.dataAte);
+			     var dateAte        = $scope.dataAte.toLocaleString();
+			     dateAte = dateAte.substring(0, 10);
+
+			     var consulta = {
+			        de : dateDe,
+			        ate: dateAte,
+			        tipo : $scope.consulta.tipo
+			     };
+
+			     de(consulta);
+
+			     RelatorioService.getDespesas({id: banco.id}, function(success){
+						$scope.labelsCategorias = success._embedded.relatorios.labelsCategoria;
+						$scope.dataCategorias = success._embedded.relatorios.dataCategoria;;
+			     }, function(error){
+			     	de(error);
+			     })
+				
 			}
-
-			//Catetorias
-
-				if(StorageData.getFamilia() != 0) {
-			      CategoriaService.contadorCategoriasDespesa().$promise.then(
-			        function(data) {
-								de(data);
-								return;
-								$scope.labelsCategorias = $scope.categorias;
-			        },
-			        function( error ){
-			          if(error.status === 404) {
-			            Notification.info({message:'Cadastre suas categorias.', delay:5000});
-			            return;
-			          }
-			          Notification.error({message: "Erro ao consultar categorias:" + status,  delay: 9000});
-			        }
-			      );
-			    }
 
 
 			$scope.labelsCategorias = $scope.categorias;
