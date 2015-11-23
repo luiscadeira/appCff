@@ -8,7 +8,6 @@
   function RelatorioCtrl($scope, StorageData, $location, $http) {
 
     $scope.showCarts = false;
-
     $scope.consultar = function() {
 
       var id_familia = StorageData.getFamilia();
@@ -29,17 +28,38 @@
 
       $http.get(BASE_URL + '/relatorios?familia_id=' + id_familia + '&dataDe=' + consulta.de + '&dataAte=' + consulta.ate + '&tipo=' + consulta.tipo)
         .success(function(data) {
-					de(data);
-					$scope.labelsCategorias = data._embedded.relatorios[0].labelsCategoria.replace("\'", "\"");
 
-					var labels = data._embedded.relatorios[0].labelsCategoria.substring(1);
+          $scope.labelsCategoria;
+          $scope.dataCategorias;
+          $scope.labelsConta;
+          $scope.dataContas;
+          var string =  data._embedded.relatorios[0].categoria.labelsCategoria.trim() ;
+          var labels = string.split(",");
 
-          $scope.dataCategorias = [38,1];
-					$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-					$scope.data = [300, 500, 100];
+          $scope.labelsCategorias = geraArray(labels);
+
+          var string =  data._embedded.relatorios[0].categoria.dataCategoria.trim() ;
+          var dataCategorias = string.split(",");
+          $scope.dataCategorias   =   geraArray(dataCategorias);
+
+
+          var string = data._embedded.relatorios[1].contas.labelsConta.trim() ;
+          var labels = string.split(",");
+          $scope.labelsConta = geraArray(labels);
+          var string = data._embedded.relatorios[1].contas.dataConta.trim() ;
+          var labels = string.split(",");
+          $scope.dataContas = geraArray(labels);
+
+          function geraArray(array){
+              var labelsCategorias = [];
+              array.forEach(function(entry) {
+              labelsCategorias.push(entry);
+            });
+            return labelsCategorias;
+          }
+
           $scope.showCharts = !$scope.showCharts;
-					de($scope.labelsCategorias);
-					de($scope.dataCategorias);
+
         }).error(function(error) {
           de(error);
         });

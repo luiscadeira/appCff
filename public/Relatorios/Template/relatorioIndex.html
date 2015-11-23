@@ -42,25 +42,25 @@
   </div>
   <!-- charts -->
    <span>
-    <div class="col-md-6">
+    <div class="col-md-6" ng-if="showCharts">
       <div class="box box-info">
         <div class="box-header">
           <h3 class="box-title"> {{consulta.tipo}} / Categoria</h3>
         </div>
-          <canvas  ng-if="showCharts" id="pie" class="chart chart-pie"chart-data="dataCategorias" chart-labels="labelsCategorias" chart-legend="true">
+          <canvas   id="pie" class="chart chart-pie"chart-data="dataCategorias" chart-labels="labelsCategorias" chart-legend="true">
         </canvas>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" ng-if="showCharts">
       <div class="box box-info">
         <div class="box-header">
-          <h3 class="box-title"> {{consulta.tipo}} / Usuario</h3>
+          <h3 class="box-title"> {{consulta.tipo}} / Conta</h3>
         </div>
-        <canvas  ng-if="showCharts"  id="pie" class="chart chart-pie"chart-data="data" chart-labels="labels" chart-legend="true">
+        <canvas  ng-if="showCharts"  id="pie" class="chart chart-pie"chart-data="dataContas" chart-labels="labelsConta" chart-legend="true">
         </canvas>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" ng-if="showCharts">
       <div class="box box-info">
         <div class="box-header">
           <h3 class="box-title"> {{consulta.tipo}} / Receita</h3>
@@ -69,7 +69,7 @@
         </canvas>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" ng-if="showCharts">
       <div class="box box-info">
         <div class="box-header">
           <h3 class="box-title"> {{consulta.tipo}} / Categorias</h3>

@@ -50,10 +50,10 @@
                   <td>{{despesa.contaNumero}}</td>
                   <td>{{despesa.banco}}</td>
                   <td>{{despesa.categoriaNome}}</td>
-                  <td>{{despesa.data_criacao}}</td>
-                  <td>{{despesa.data_vencimento}}</td>
+                  <td>{{despesa.data_criacao_despesa}}</td>
+                  <td>{{despesa.data_vencimento_despesa}}</td>
                   <td>{{despesa.pago}}</td>
-                  <td>{{despesa.user}}</td>
+                  <td>{{despesa.userNome}}</td>
                   <td>
                   <span ng-if="despesa.pago !== 'Pago' ">
                     <button class="btn btn-danger" ng-click="delete(despesa)" ng-click="delete(despesa)"><i class='fa fa-trash' ></i>  Remover</button>
