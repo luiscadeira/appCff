@@ -6,6 +6,8 @@
     <form role="form" name="relatorioForm">
     <pre>{{dataAte}}</pre>
   <pre>{{dataDe}}</pre>
+  <pre>{{labelsCategorias}}</pre>
+  <pre>{{dataCategorias}}</pre>
   <div class="box-body">
     <div class="form-group">
       <label>De:</label>
@@ -39,13 +41,14 @@
     </form>
   </div>
   <!-- charts -->
-  <span ng-if="showCharts">
+   <span >
     <div class="col-md-6">
       <div class="box box-info">
         <div class="box-header">
           <h3 class="box-title"> {{consulta.tipo}} / Categoria</h3>
         </div>
-        <canvas id="pie" class="chart chart-pie"chart-data="dataCategorias" chart-labels="labelsCategorias" chart-legend="true"></canvas>
+          <canvas id="pie" class="chart chart-pie"chart-data="dataCategorias" chart-labels="labelsCategorias" chart-legend="true">
+        </canvas>
       </div>
     </div>
     <div class="col-md-6">

@@ -3,14 +3,17 @@
 	angular.module('app')
 		.controller('RelatorioCtrl',RelatorioCtrl );
 
-		RelatorioCtrl.$injet = ['$scope', 'StorageData', '$location','RelatorioService'];
+		RelatorioCtrl.$injet = ['$scope', 'StorageData', '$location','$http'];
 
-		function RelatorioCtrl ($scope,StorageData, $location,RelatorioService){
+		function RelatorioCtrl ($scope,StorageData, $location,$http){
 
 			$scope.showCarts = false;
 
 			$scope.consultar = function(){
-				 $scope.showCharts   = !$scope.showCharts;
+
+				 var id_familia = StorageData.getFamilia();
+
+				
 				 $scope.dataDe       = new Date($scope.dataDe);
 			     var dateDe          = $scope.dataDe.toLocaleString();
 			     dateDe = dateDe.substring(0, 10);		    
@@ -24,24 +27,26 @@
 			        tipo : $scope.consulta.tipo
 			     };
 
-			     de(consulta);
+			     $http.get(BASE_URL +'/relatorios?familia_id='+id_familia+'&dataDe='+consulta.de+'&dataAte='+consulta.ate+'&tipo='+consulta.tipo)
+			     	.success(function(data){
+			     		de(data);
+					$scope.labelsCategorias = data._embedded.relatorios[0].labelsCategoria;
+					$scope.dataCategorias   = data._embedded.relatorios[0].dataCategoria;
+					de($scope.dataCategorias);
+					$scope.labels = data._embedded.relatorios[0].labelsCategoria;
+              	    $scope.showCharts       = !$scope.showCharts;
 
-			     RelatorioService.getDespesas({id: banco.id}, function(success){
-						$scope.labelsCategorias = success._embedded.relatorios.labelsCategoria;
-						$scope.dataCategorias = success._embedded.relatorios.dataCategoria;;
-			     }, function(error){
-			     	de(error);
-			     })
-				
+			        
+
+			     	}).error(function(error){
+			     		de(error);
+			     });
+		
 			}
 
 
-			$scope.labelsCategorias = $scope.categorias;
-			$scope.dataCategorias = [1, 2];
-
-
-			$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-            $scope.data = [300, 500, 100];
+			
+            $scope.data = [8,1,2];
     	};
 
 })()
