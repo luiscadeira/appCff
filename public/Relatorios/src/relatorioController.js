@@ -50,6 +50,14 @@
           var labels = string.split(",");
           $scope.dataContas = geraArray(labels);
 
+
+          var string = data._embedded.relatorios[2].usuarios.labelsUsuario.trim() ;
+          var labels = string.split(",");
+          $scope.labelsUsuario = geraArray(labels);
+          var string = data._embedded.relatorios[2].usuarios.dataUsuario.trim() ;
+          var labels = string.split(",");
+          $scope.dataUsuario = geraArray(labels);
+
           function geraArray(array){
               var labelsCategorias = [];
               array.forEach(function(entry) {

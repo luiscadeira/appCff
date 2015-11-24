@@ -131,6 +131,13 @@ app.config(
                 .when('/newOrcamento',
                 {
                     templateUrl : '../Orcamento/Template/orcamentoDetalhes.html',
+                    controller : 'OrcamentoDetalhes',
+                    resolve : {
+                      contasList :  function(ContaService) {
+                        return  ContaService.query();
+
+                       }
+                    }
                 })
                  .when('/estornarOrcamento',
                 {

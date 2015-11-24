@@ -22,7 +22,7 @@
 			if (confirm("Remover  Despesa ?")) {
 						DespesaService.delete({id: despesa.id}, function(data) {
 							Notification.info( {message: 'Despesa removido com sucesso', delay: 2000});
-							 $route.reload()
+							 $route.reload();
 						},
 						function(error) {
 							Notification.error( {message: 'Erro ao remover Despesa: '+banco.nome+'.\n'+error.statusText, delay: 2000});
@@ -76,10 +76,12 @@
 				despesa.pago	 = true;
 				DespesaService.update({id, despesa}, function(success){
 						Notification.info({message: 'Despesa atualizada com sucesso.' , delay: 9000});
+						despesa.pago	 = 'Pago';
+						$route.reload();
 				}, function(error) {
 						Notification.error({message: 'Erro ao atualizar despesa.' , delay: 9000});
 				})
-				de(despesa);
+
 			}
 
 

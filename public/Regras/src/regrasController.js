@@ -23,7 +23,7 @@
 					id: 2,
 					regra : 'Nº Lançamentos',
 					valor : '100',
-					categoria: 'Beleza'
+					categoria: 'Vestimentas'
 
 				},
 				{
